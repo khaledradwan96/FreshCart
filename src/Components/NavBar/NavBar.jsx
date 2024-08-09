@@ -2,13 +2,19 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect, useContext} from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
 import { UserContext } from '../../Context/UserContext'
-UserContext
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
+    let navigate = useNavigate()
+
+    function logOut(){
+        localStorage.removeItem('userToken') // remove data from localStorage
+        setUserLogin(null) // remove data from context
+        navigate('/login')
+    }
 
     return <>
         <nav className='bg-gray-300 md:fixed top-0 left-0 right-0'>
@@ -29,16 +35,16 @@ export default function NavBar() {
                     <ul className='flex flex-col md:flex-row md:items-center'>
                         {userLogin === null ? 
                             <>
-                                <li className='p-2'><NavLink to='register'>Register</NavLink></li>
-                                <li className='p-2'><NavLink to='login'>Login</NavLink></li>
+                                <li className='p-2'><Link to='register'>Register</Link></li>
+                                <li className='p-2'><Link to='login'>Login</Link></li>
                             </> : 
-                                <li className='p-2'><NavLink>Logout</NavLink></li>
+                                <li className='p-2'><Link onClick={logOut}>Logout</Link></li>
                         }
-                        <li>
-                            <i className='fab p-2 fa-facebook'></i>
-                            <i className='fab p-2 fa-youtube'></i>
-                            <i className='fab p-2 fa-tiktok'></i>
-                            <i className='fab p-2 fa-spotify'></i>
+                        <li className='hidden lg:block'>
+                            <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
+                            <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>
+                            <Link to='#'><i className='fab p-2 fa-tiktok'></i></Link>
+                            <Link to='#'><i className='fab p-2 fa-spotify'></i></Link>
                         </li>
                     </ul> 
                 </div>
