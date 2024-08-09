@@ -12,15 +12,16 @@ import Register from './Components/Register/Register'
 import Login from './Components/Login/Login'
 import Notfound from './Components/Notfound/Notfound'
 import UserContextProvider from './Context/UserContext'
+import ProtectRoute from './Components/ProtectRoute/ProtectRoute'
 
 
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
-    {index: true, element: <Home/>},
-    {path: 'product', element: <Product/>},
-    {path: 'cart', element: <Cart/>},
-    {path: 'brands', element: <Brands/>},
-    {path: 'categories', element: <Categories/>},
+    {index: true, element: <ProtectRoute> <Home/> </ProtectRoute> },
+    {path: 'product', element: <ProtectRoute> <Product/> </ProtectRoute>},
+    {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
+    {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
+    {path: 'categories', element: <ProtectRoute> <Categories/> </ProtectRoute>},
     {path: 'register', element: <Register/>},
     {path: 'login', element: <Login/>},
     {path: '*', element: <Notfound/>},

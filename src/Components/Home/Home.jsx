@@ -10,12 +10,7 @@ export default function Home() {
     let {count, setcount, userName, setuserName} = useContext(CounterContext)
     return <>
         <div className="py-10">
-            <h2>Home {count}</h2>
-            <button onClick={()=>{setcount(Math.random())}} className='bg-teal-600 p-2'>Change Count</button>
-            <Product/>
-            <Product>
-                <Cart/>
-            </Product>
+            <h2>Home</h2>
         </div>
     </>
 }
