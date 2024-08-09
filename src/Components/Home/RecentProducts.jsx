@@ -12,14 +12,22 @@ export default function RecentProducts() {
   }
   useEffect(()=>{
     getRecentProducts()
-  },[])
+  }, [])
   return <>
-    <h4>Recent Products</h4>
     <div className="row">
-      <div className="w-1/6 px-5">
-        <img src="" alt="" />
-        <span>Category</span>
-      </div>
+      {recentProducts.map((product)=>
+            <div key={product.id} className="md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
+              <div className='shadow-md p-3 product'>
+                <img src={product.imageCover} alt="" />
+                <span className='text-main text-sm'>{product.category.name}</span>
+                <h4 className='font-bold'>{product.title.split(' ').slice(0,2).join(' ')}</h4>
+                <div className="row justify-between">
+                  <span>{product.price} EGP</span>
+                  <span><i className='fa-solid fa-star text-yellow-300'></i>Rate</span>
+                </div>
+              </div>
+            </div>
+      )}
     </div>
   </>
 }

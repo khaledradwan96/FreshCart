@@ -18,7 +18,7 @@ export default function NavBar() {
 
     return <>
         <nav className='bg-gray-300 md:fixed top-0 left-0 right-0 z-50'>
-            <div className='p-4 flex flex-col md:flex-row md:justify-between md:items-center'>
+            <div className='container mx-auto p-4 flex flex-col md:flex-row md:justify-between md:items-center'>
                 <div className='logo flex flex-col md:flex-row '>
                     <Link to='' className='p-2'><img width={110} src={logo}/></Link>
                     <ul id='navbar' className='flex flex-col md:flex-row'>

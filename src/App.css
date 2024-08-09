@@ -24,9 +24,13 @@ a:hover {
   color: black;
   text-decoration: none;
 }
+.product {
+  transition: 0.3s;
+}
 .product:hover {
   box-shadow: var(--shadow);
   border: solid 1px var(--main-color);
+  transform: translateY(-7px);
 }
 .product .btn {
   transition: transform 1s, opacity 1s;

@@ -10,7 +10,7 @@ import RecentProducts from './RecentProducts'
 export default function Home() {
     let {count, setcount, userName, setuserName} = useContext(CounterContext)
     return <>
-        <div className="container px-10 mx-auto">
+        <div className="container mx-auto">
             <h2>Home</h2>
             <RecentProducts/>
         </div>
