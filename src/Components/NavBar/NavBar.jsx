@@ -32,9 +32,8 @@ export default function NavBar() {
                         <li className='p-2'><NavLink>Logout</NavLink></li>
                         <li>
                             <i className='fab p-2 fa-facebook'></i>
-                            <i className='fab p-2 fa-twitter'></i>
-                            <i className='fab p-2 fa-tiktok'></i>
                             <i className='fab p-2 fa-youtube'></i>
+                            <i className='fab p-2 fa-tiktok'></i>
                             <i className='fab p-2 fa-spotify'></i>
                         </li>
                     </ul> 
