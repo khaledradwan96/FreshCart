@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect, useContext} from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
 import { UserContext } from '../../Context/UserContext'
 UserContext
@@ -14,11 +14,10 @@ export default function NavBar() {
         <nav className='bg-gray-300 md:fixed top-0 left-0 right-0'>
             <div className='p-4 flex flex-col md:flex-row md:justify-between md:items-center'>
                 <div className='logo flex flex-col md:flex-row '>
-                    <img width={110} src={logo} alt="" />
-                    <ul className='flex flex-col md:flex-row'>
+                    <Link to='' className='p-2'><img width={110} src={logo}/></Link>
+                    <ul id='navbar' className='flex flex-col md:flex-row'>
                         {userLogin !== null ? 
                             <>
-                                <li className='p-2'><NavLink to=''>Home</NavLink></li>
                                 <li className='p-2'><NavLink to='product'>Products</NavLink></li>
                                 <li className='p-2'><NavLink to='cart'>Cart</NavLink></li>
                                 <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
