@@ -3,12 +3,14 @@
 
 import axios from 'axios'
 import { useFormik } from 'formik'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
+import { UserContext } from '../../Context/UserContext'
 
 
 export default function Register() {
+    let {setUserLogin} = useContext(UserContext)
     let navigate = useNavigate()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -19,22 +21,25 @@ export default function Register() {
         rePassword: '',
         phone: ''
     }
+
     async function submitForm(val){
-        setLoading(true)
-        // Call api
+        setLoading(true) // make submit start loading
+        // Call API
         const api = 'https://ecommerce.routemisr.com/api/v1/auth/signup'
         let response = await axios.post(api, val)
             .then((resp)=>{ 
-                console.log(resp?.data?.message) 
-                console.log(resp?.data?.token) 
-                navigate('/login')
-                setLoading(false)
+                localStorage.setItem('userToken', resp?.data?.token) // storage token in localStorage
+                setUserLogin(resp?.data?.token) // storage token in Context
+                navigate('/login') // go to login page
+                setLoading(false) // make submit stop loading
             })
             .catch((resp)=>{
                 setError(resp?.response?.data.message)
                 setLoading(false)
             })
     }
+
+    // validation regex
     let validate = Yap.object().shape({
         name: Yap.string()
                 .required('Name is required')
@@ -52,6 +57,7 @@ export default function Register() {
                 .required('Phone is required')
                 .matches(/^01[0125][0-9]{8}$/, 'invalid phone')
     })
+
     let formik = useFormik({
         initialValues: user,
         onSubmit: submitForm,

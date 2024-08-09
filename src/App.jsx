@@ -11,7 +11,7 @@ import Categories from './Components/Categories/Categories'
 import Register from './Components/Register/Register'
 import Login from './Components/Login/Login'
 import Notfound from './Components/Notfound/Notfound'
-import CounterContextProvider from './Context/CounterContext'
+import UserContextProvider from './Context/UserContext'
 
 
 let router = createBrowserRouter([
@@ -28,9 +28,9 @@ let router = createBrowserRouter([
 ])
 function App() {
   return <>
-    <CounterContextProvider>
+    <UserContextProvider>
             <RouterProvider router={router}></RouterProvider>
-    </CounterContextProvider>
+    </UserContextProvider>
     </>
 }
 

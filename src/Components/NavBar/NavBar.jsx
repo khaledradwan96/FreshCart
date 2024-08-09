@@ -4,11 +4,11 @@
 import React , { useState , useEffect, useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
-import { CounterContext } from '../../Context/CounterContext'
-
+import { UserContext } from '../../Context/UserContext'
+UserContext
 
 export default function NavBar() {
-    let {count} = useContext(CounterContext)
+    let  {userLogin, setUserLogin} = useContext(UserContext)
 
     return <>
         <nav className='bg-gray-300 md:fixed top-0 left-0 right-0'>
@@ -16,18 +16,25 @@ export default function NavBar() {
                 <div className='logo flex flex-col md:flex-row '>
                     <img width={110} src={logo} alt="" />
                     <ul className='flex flex-col md:flex-row'>
-                        <li className='p-2'><NavLink to=''>Home</NavLink></li>
-                        <li className='p-2'><NavLink to='product'>Products</NavLink></li>
-                        <li className='p-2'><NavLink to='cart'>Cart</NavLink></li>
-                        <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
-                        <li className='p-2'><NavLink to='categories'>Categories</NavLink></li>
+                        {userLogin !== null ? 
+                            <>
+                                <li className='p-2'><NavLink to=''>Home</NavLink></li>
+                                <li className='p-2'><NavLink to='product'>Products</NavLink></li>
+                                <li className='p-2'><NavLink to='cart'>Cart</NavLink></li>
+                                <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
+                                <li className='p-2'><NavLink to='categories'>Categories</NavLink></li>                        
+                            </> : null}
                     </ul>
                 </div>
                 <div>
                     <ul className='flex flex-col md:flex-row md:items-center'>
-                        <li className='p-2'><NavLink to='register'>Register</NavLink></li>
-                        <li className='p-2'><NavLink to='login'>Login</NavLink></li>
-                        <li className='p-2'><NavLink>Logout</NavLink></li>
+                        {userLogin === null ? 
+                            <>
+                                <li className='p-2'><NavLink to='register'>Register</NavLink></li>
+                                <li className='p-2'><NavLink to='login'>Login</NavLink></li>
+                            </> : 
+                                <li className='p-2'><NavLink>Logout</NavLink></li>
+                        }
                         <li>
                             <i className='fab p-2 fa-facebook'></i>
                             <i className='fab p-2 fa-youtube'></i>
@@ -37,7 +44,6 @@ export default function NavBar() {
                     </ul> 
                 </div>
             </div>
-            <h4>Count: {count}</h4>
         </nav>
     </>
 }

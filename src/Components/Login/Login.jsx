@@ -3,12 +3,13 @@
 
 import axios from 'axios'
 import { useFormik } from 'formik'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
-
+import { UserContext } from '../../Context/UserContext'
 
 export default function Login() {
+    let {setUserLogin} = useContext(UserContext)
     let navigate = useNavigate()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -17,15 +18,15 @@ export default function Login() {
         password: '',
     }
     async function submitForm(val){
-        setLoading(true)
+        setLoading(true) // make submit start loading
         // Call api
         const api = 'https://ecommerce.routemisr.com/api/v1/auth/signin'
         let response = await axios.post(api, val)
             .then((resp)=>{ 
-                console.log(resp?.data?.message) 
-                console.log(resp?.data?.token) 
+                localStorage.setItem('userToken', resp?.data?.token) // storage token in localStorage
+                setUserLogin(resp?.data?.token) // storage token in Context
                 navigate('/') // to go home page
-                setLoading(false)
+                setLoading(false) // make submit stop loading
             })
             .catch((resp)=>{
                 setError(resp?.response?.data.message)
