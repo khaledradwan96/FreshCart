@@ -1,17 +1,15 @@
 // NavBar.jsx
 /* eslint-disable no-unused-vars */
 
-import React , { useState , useEffect} from 'react'
-import style from './NavBar.module.css'
+import React , { useState , useEffect, useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
+import { CounterContext } from '../../Context/CounterContext'
 
 
 export default function NavBar() {
-    const [Count, setCount] = useState(0)
-    useEffect(()=>{
+    let {count} = useContext(CounterContext)
 
-    }, [])
     return <>
         <nav className='bg-gray-300 md:fixed top-0 left-0 right-0'>
             <div className='p-4 flex flex-col md:flex-row md:justify-between md:items-center'>
@@ -39,6 +37,7 @@ export default function NavBar() {
                     </ul> 
                 </div>
             </div>
+            <h4>Count: {count}</h4>
         </nav>
     </>
 }

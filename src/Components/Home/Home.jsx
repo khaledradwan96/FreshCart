@@ -1,15 +1,21 @@
 // Home.jsx
 /* eslint-disable no-unused-vars */
 
-import React , { useState , useEffect} from 'react'
-import style from './Home.module.css'
+import React , { useState , useEffect, useContext} from 'react'
+import Product from '../Product/Product'
+import Cart from '../Cart/Cart'
+import { CounterContext } from '../../Context/CounterContext'
 
 export default function Home() {
-    const [Count, setCount] = useState(0)
-    useEffect(()=>{
-
-    }, [])
+    let {count, setcount, userName, setuserName} = useContext(CounterContext)
     return <>
-        <h2>Home</h2>
+        <div className="py-10">
+            <h2>Home {count}</h2>
+            <button onClick={()=>{setcount(Math.random())}} className='bg-teal-600 p-2'>Change Count</button>
+            <Product/>
+            <Product>
+                <Cart/>
+            </Product>
+        </div>
     </>
 }
