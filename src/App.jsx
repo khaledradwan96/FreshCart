@@ -36,3 +36,8 @@ function App() {
 }
 
 export default App
+
+// we write index: true => to mention home
+// we use createBrowserRouter => to can move from all compound
+// we use UserContextProvider => to can access data from any compound
+// we use ProtectRoute  => to protect our site
