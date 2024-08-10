@@ -28,6 +28,9 @@ export default function RecentProducts() {
                   <span>{product.price} EGP</span>
                   <span><i className='fa-solid fa-star text-yellow-300'></i>{product.ratingsAverage}</span>
                 </div>
+                <button className='btn bg-main w-full'>
+                  <i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i>
+                  </button>
               </div>
             </Link>
           </div>

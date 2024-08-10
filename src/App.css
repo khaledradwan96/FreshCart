@@ -20,7 +20,6 @@ body {
   background-color: var(--main-color) !important;
 }
 
-
 .rating-color {
   color: var(--rating-color);
 }
@@ -41,6 +40,7 @@ a:hover {
   transform: translateY(-7px);
 }
 .product .btn {
+  /* position: absolute; */
   transition: transform 1s, opacity 1s;
   transform: translateY(100%);
   opacity: 0;
