@@ -2,13 +2,13 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect, useContext} from 'react'
-import { CounterContext } from '../../../Context/CounterContext'
 import RecentProducts from './RecentProducts'
+import CategoriesSlider from './CategoriesSlider'
 
 export default function Home() {
-    let {count, setcount, userName, setuserName} = useContext(CounterContext)
     return <>
         <div className="container mx-auto">
+            <CategoriesSlider/>
             <RecentProducts/>
         </div>
     </>

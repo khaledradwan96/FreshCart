@@ -51,7 +51,7 @@ export default function Login() {
         <div className='mx-auto'>
             <h2 className='font-bold text-4xl text-main text-center'>Login</h2>
             <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto py-5">
-                        {/* ========== Email input ========== */}
+                {/* ========== Email input ========== */}
                 <div className="relative z-0 w-full mb-5 group mt-5">
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur}
                         value={formik.values.email} type="email" name="email" id="email" 
@@ -63,7 +63,7 @@ export default function Login() {
                         </div>
                     : null}
                 </div>
-                        {/* ========== Password input ========== */}
+                {/* ========== Password input ========== */}
                 <div className="relative z-0 w-full mb-5 group mt-5">
                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} 
                         value={formik.values.password} type="password" name="password" id="password" 
@@ -75,7 +75,7 @@ export default function Login() {
                         </div>
                     : null}
                 </div>
-                        {/* ========== Submit input ========== */}
+                {/* ========== Submit input ========== */}
                 <button type="submit" 
                         className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         {loading ? 

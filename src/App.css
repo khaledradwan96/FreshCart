@@ -33,8 +33,6 @@ a:hover {
 }
 .product {
   transition: 0.3s;
-  position: relative;
-  /* overflow: hidden; */
 }
 .product:hover {
   box-shadow: var(--shadow);
@@ -42,7 +40,6 @@ a:hover {
   transform: translateY(-7px);
 }
 .product .btn {
-  /* position: absolute; */
   transition: transform 1s, opacity 1s;
   transform: translateY(100%);
   opacity: 0;
