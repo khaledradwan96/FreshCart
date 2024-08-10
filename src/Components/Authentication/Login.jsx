@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
-import { UserContext } from '../../../Context/UserContext'
+import { UserContext } from '../../Context/UserContext'
 
 export default function Login() {
     let {setUserLogin} = useContext(UserContext)
@@ -49,7 +49,7 @@ export default function Login() {
 
     return <>
         <div className='mx-auto'>
-            <h2 className='font-bold text-4xl text-main'>Login</h2>
+            <h2 className='font-bold text-4xl text-main text-center'>Login</h2>
             <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto py-5">
                         {/* ========== Email input ========== */}
                 <div className="relative z-0 w-full mb-5 group mt-5">

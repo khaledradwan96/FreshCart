@@ -1,0 +1,31 @@
+nav #navbar a:hover,
+nav #navbar a.active {
+  font-weight: 600;
+}
+nav #navbar a {
+  position: relative;
+  overflow: hidden;
+}
+nav #navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 3px;
+  background-color: var(--main-color);
+  bottom: -8px;
+  left: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s;
+}
+nav #navbar a:hover::after,
+nav #navbar a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+nav #social i {
+  transition: 0.3s;
+}
+nav #social a:hover {
+  color: var(--main-color);
+}

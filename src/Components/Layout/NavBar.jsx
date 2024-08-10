@@ -3,8 +3,9 @@
 
 import React , { useState , useEffect, useContext} from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import logo from '../../../assets/images/freshcart-logo.svg'
-import { UserContext } from '../../../Context/UserContext'
+import logo from '../../assets/images/freshcart-logo.svg'
+import { UserContext } from '../../Context/UserContext'
+import './NavBar.css'
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
@@ -32,7 +33,7 @@ export default function NavBar() {
                     </ul>
                 </div>
                 <div>
-                    <ul className='flex flex-col md:flex-row md:items-center'>
+                    <ul id='social' className='flex flex-col md:flex-row md:items-center'>
                         <li className='hidden md:block'>
                                 <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
                                 <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>

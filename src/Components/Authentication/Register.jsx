@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
-import { UserContext } from '../../../Context/UserContext'
+import { UserContext } from '../../Context/UserContext'
 
 
 export default function Register() {
@@ -66,7 +66,7 @@ export default function Register() {
 
     return <>
         <div className='mx-auto'>
-            <h2 className='font-bold text-4xl text-main'>Register Now</h2>
+            <h2 className='font-bold text-4xl text-main text-center'>Register Now</h2>
             <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto py-5">
                         {/* ========== Name input ========== */}
                 <div className="relative z-0 w-full mb-5 group mt-5">

@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect} from 'react'
-import NavBar from '../Layout/NavBar/NavBar'
-import Footer from '../Layout/Footer/Footer'
+import NavBar from './NavBar'
+import Footer from './Footer'
 import { Outlet } from 'react-router-dom'
 
 
@@ -14,7 +14,7 @@ export default function Layout() {
     }, [])
     return <>
         <NavBar/>
-        <div className="container mx-auto md:pt-20">
+        <div className="container p-2 mx-auto md:pt-20">
             <Outlet/>
         </div>
         <Footer/>
