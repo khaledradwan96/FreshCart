@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect} from 'react'
-import NavBar from '../NavBar/NavBar'
-import Footer from '../Footer/Footer'
+import NavBar from '../Layout/NavBar/NavBar'
+import Footer from '../Layout/Footer/Footer'
 import { Outlet } from 'react-router-dom'
 
 

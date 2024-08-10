@@ -1,14 +1,14 @@
-// Categories.jsx
+// Brands.jsx
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect} from 'react'
 
-export default function Categories() {
+export default function Brands() {
     const [Count, setCount] = useState(0)
     useEffect(()=>{
 
     }, [])
     return <>
-        <h2>Categories</h2>
+        <h2>Brands Compound</h2>
     </>
 }

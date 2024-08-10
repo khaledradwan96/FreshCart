@@ -3,8 +3,8 @@
 
 import React , { useState , useEffect, useContext} from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import logo from '../../assets/images/freshcart-logo.svg'
-import { UserContext } from '../../Context/UserContext'
+import logo from '../../../assets/images/freshcart-logo.svg'
+import { UserContext } from '../../../Context/UserContext'
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
@@ -24,10 +24,10 @@ export default function NavBar() {
                     <ul id='navbar' className='flex flex-col md:flex-row'>
                         {userLogin !== null ? 
                             <>
-                                <li className='p-2'><NavLink to='product'>Products</NavLink></li>
                                 <li className='p-2'><NavLink to='cart'>Cart</NavLink></li>
-                                <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
+                                <li className='p-2'><NavLink to='products'>Products</NavLink></li>
                                 <li className='p-2'><NavLink to='categories'>Categories</NavLink></li>                        
+                                <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
                             </> : null}
                     </ul>
                 </div>

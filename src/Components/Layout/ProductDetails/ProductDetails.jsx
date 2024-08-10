@@ -37,7 +37,7 @@ export default function ProductDetails() {
     useEffect(()=>{
         getProductDetails(id)
         getRelatedProduct()
-    },[])
+    },[id, category])
     return <>
         <div className='row items-center pb-5'>
             <div className="sm:w-1/4 p-2">
@@ -89,3 +89,5 @@ export default function ProductDetails() {
 }
 
 // we show the product which we click on it by its ID
+// in related product i use link to `/productDetails/${product.id}/${product?.category?.name}`
+//     => (/) to delete old link path

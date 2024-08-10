@@ -5,6 +5,6 @@ import React , { useState , useEffect} from 'react'
 
 export default function Cart() {
     return <>
-        <h2>Cart</h2>
+        <h2>Cart Compound</h2>
     </>
 }

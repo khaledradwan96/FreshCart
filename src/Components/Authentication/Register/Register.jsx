@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
-import { UserContext } from '../../Context/UserContext'
+import { UserContext } from '../../../Context/UserContext'
 
 
 export default function Register() {

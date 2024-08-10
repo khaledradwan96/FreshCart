@@ -3,23 +3,23 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Layout from './Components/Layout/Layout'
-import Home from './Components/Home/Home'
-import Product from './Components/Product/Product'
-import Cart from './Components/Cart/Cart'
-import Brands from './Components/Brands/Brands'
-import Categories from './Components/Categories/Categories'
-import Register from './Components/Register/Register'
-import Login from './Components/Login/Login'
+import Home from './Components/Layout/Home/Home'
+import Cart from './Components/Layout/Cart/Cart'
+import Brands from './Components/Layout/Brands/Brands'
+import Categories from './Components/Layout/Categories/Categories'
+import Register from './Components/Authentication/Register/Register'
+import Login from './Components/Authentication/Login/Login'
 import Notfound from './Components/Notfound/Notfound'
 import UserContextProvider from './Context/UserContext'
-import ProtectRoute from './Components/ProtectRoute/ProtectRoute'
-import ProductDetails from './Components/ProductDetails/ProductDetails'
+import ProtectRoute from './Components/Authentication/ProtectRoute/ProtectRoute'
+import ProductDetails from './Components/Layout/ProductDetails/ProductDetails'
+import Products from './Components/Layout/Products/Products'
 
-
+Home
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
     {index: true, element: <ProtectRoute> <Home/> </ProtectRoute> },
-    {path: 'product', element: <ProtectRoute> <Product/> </ProtectRoute>},
+    {path: 'products', element: <ProtectRoute> <Products/> </ProtectRoute> },
 
     {path: 'productDetails/:id/:category', element: <ProtectRoute> <ProductDetails/> </ProtectRoute>},
     
