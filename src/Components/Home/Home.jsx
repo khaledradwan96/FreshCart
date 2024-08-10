@@ -11,7 +11,6 @@ export default function Home() {
     let {count, setcount, userName, setuserName} = useContext(CounterContext)
     return <>
         <div className="container mx-auto">
-            <h2>Home</h2>
             <RecentProducts/>
         </div>
     </>

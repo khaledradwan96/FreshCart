@@ -9,6 +9,10 @@ export default function Footer() {
 
     }, [])
     return <>
-        <h2>Footer</h2>
+    <div className='bg-gray-300'>
+        <div className="container mx-auto p-4">
+            <h2>Footer</h2>
+        </div>
+    </div>
     </>
 }

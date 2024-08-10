@@ -7,4 +7,10 @@
   @apply flex flex-wrap;
 }
 
-
+.btn {
+  @apply p-4 py-2 mt-2 rounded-md text-white;
+  /* transition: 0.3s; */
+}
+.btn:hover {
+  /* @apply bg-green-700; */
+}

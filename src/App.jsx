@@ -13,12 +13,14 @@ import Login from './Components/Login/Login'
 import Notfound from './Components/Notfound/Notfound'
 import UserContextProvider from './Context/UserContext'
 import ProtectRoute from './Components/ProtectRoute/ProtectRoute'
+import ProductDetails from './Components/ProductDetails/ProductDetails'
 
 
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
     {index: true, element: <ProtectRoute> <Home/> </ProtectRoute> },
     {path: 'product', element: <ProtectRoute> <Product/> </ProtectRoute>},
+    {path: 'productDetails/:id', element: <ProtectRoute> <ProductDetails/> </ProtectRoute>},
     {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
     {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
     {path: 'categories', element: <ProtectRoute> <Categories/> </ProtectRoute>},

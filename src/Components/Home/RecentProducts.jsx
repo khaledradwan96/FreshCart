@@ -1,7 +1,9 @@
-/* eslint-disable no-unused-vars */
 // RecentProducts.jsx
+/* eslint-disable no-unused-vars */
+
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function RecentProducts() {
   const [recentProducts, setRecentProducts] = useState([])
@@ -16,18 +18,22 @@ export default function RecentProducts() {
   return <>
     <div className="row">
       {recentProducts.map((product)=>
-            <div key={product.id} className="md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
+          <div key={product.id} className="md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
+            <Link to={`productDetails/${product.id}`}>            
               <div className='shadow-md p-3 product'>
                 <img src={product.imageCover} alt="" />
                 <span className='text-main text-sm'>{product.category.name}</span>
-                <h4 className='font-bold'>{product.title.split(' ').slice(0,2).join(' ')}</h4>
+                <h4 className='font-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h4>
                 <div className="row justify-between">
                   <span>{product.price} EGP</span>
-                  <span><i className='fa-solid fa-star text-yellow-300'></i>Rate</span>
+                  <span><i className='fa-solid fa-star text-yellow-300'></i>{product.ratingsAverage}</span>
                 </div>
               </div>
-            </div>
+            </Link>
+          </div>
       )}
     </div>
   </>
 }
+
+// => I use Link in product to can go to productDetails

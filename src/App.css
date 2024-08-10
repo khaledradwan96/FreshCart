@@ -13,6 +13,14 @@
 body {
   font-family: var(--font-family) !important;
 }
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+
+
 .rating-color {
   color: var(--rating-color);
 }
@@ -44,12 +52,7 @@ a:hover {
 .font-sm {
   font-size: 14px;
 }
-.text-main {
-  color: var(--main-color);
-}
-.bg-main {
-  background-color: var(--main-color) !important;
-}
+
 .bg-main-light {
   background-color: var(--light-color) !important;
 }

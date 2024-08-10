@@ -33,6 +33,12 @@ export default function NavBar() {
                 </div>
                 <div>
                     <ul className='flex flex-col md:flex-row md:items-center'>
+                        <li className='hidden md:block'>
+                                <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
+                                <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>
+                                <Link to='#'><i className='fab p-2 fa-tiktok'></i></Link>
+                                <Link to='#'><i className='fab p-2 fa-spotify'></i></Link>
+                            </li>
                         {userLogin === null ? 
                             <>
                                 <li className='p-2'><Link to='register'>Register</Link></li>
@@ -40,12 +46,6 @@ export default function NavBar() {
                             </> : 
                                 <li className='p-2'><Link onClick={logOut}>Logout</Link></li>
                         }
-                        <li className='hidden lg:block'>
-                            <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
-                            <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>
-                            <Link to='#'><i className='fab p-2 fa-tiktok'></i></Link>
-                            <Link to='#'><i className='fab p-2 fa-spotify'></i></Link>
-                        </li>
                     </ul> 
                 </div>
             </div>
