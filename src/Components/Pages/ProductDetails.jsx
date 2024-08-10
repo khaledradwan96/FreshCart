@@ -15,10 +15,13 @@ export default function ProductDetails() {
     var settings = {
         dots: true,
         infinite: true,
-        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        };
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
+        arrows: false,
+    };
 
     async function getProductDetails(id) {
         const api = `https://ecommerce.routemisr.com/api/v1/products/${id}`

@@ -10,10 +10,13 @@ export default function CategoriesSlider() {
     var settings = {
         dots: true,
         infinite: true,
-        speed: 500,
         slidesToShow: 8,
         slidesToScroll: 5,
-        };
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
+        arrows: false,
+    };
 
     async function getCategories() {
         const api = `https://ecommerce.routemisr.com/api/v1/categories`
@@ -25,9 +28,9 @@ export default function CategoriesSlider() {
         getCategories()
     },[])
     return <>
-        <h2 className='text-xl text-main'>Shop Popular Categories</h2>
+        <h2 className='text-xl text-main mb-2'>Shop Popular Categories</h2>
         {/* ========== react-slick-slider ========== */}
-        <Slider {...settings} className='mb-4'>
+        <Slider {...settings} className='mb-10'>
             {categories.map((category, i)=>
                 <div key={i}>
                     <img src={category.image} className='h-[100px]' alt="" />
