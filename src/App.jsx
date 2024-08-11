@@ -14,6 +14,7 @@ import Login from './Components/Authentication/Login'
 import ProtectRoute from './Components/Authentication/ProtectRoute'
 import Notfound from './Components/Notfound/Notfound'
 import UserContextProvider from './Context/UserContext'
+import { CartContextProvider } from './Context/CartContext'
 
 Home
 let router = createBrowserRouter([
@@ -33,9 +34,11 @@ let router = createBrowserRouter([
 ])
 function App() {
   return <>
-    <UserContextProvider>
-            <RouterProvider router={router}></RouterProvider>
-    </UserContextProvider>
+      <UserContextProvider>
+          <CartContextProvider>
+                    <RouterProvider router={router}></RouterProvider>
+          </CartContextProvider>
+      </UserContextProvider>
     </>
 }
 

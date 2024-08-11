@@ -34,7 +34,7 @@ export default function CategoriesSlider() {
             {categories.map((category, i)=>
                 <div key={i}>
                     <img src={category.image} className='h-[100px]' alt="" />
-                    <h4>{category.name}</h4>
+                    <h4 className='font-light mt-1'>{category.name}</h4>
                 </div>
             )}
         </Slider>
