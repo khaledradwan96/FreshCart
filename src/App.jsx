@@ -16,6 +16,10 @@ import Notfound from './Components/Notfound/Notfound'
 import UserContextProvider from './Context/UserContext'
 import { CartContextProvider } from './Context/CartContext'
 
+import { Toaster } from 'react-hot-toast';
+
+
+
 Home
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
@@ -37,6 +41,7 @@ function App() {
       <UserContextProvider>
           <CartContextProvider>
                     <RouterProvider router={router}></RouterProvider>
+                    <Toaster />
           </CartContextProvider>
       </UserContextProvider>
     </>

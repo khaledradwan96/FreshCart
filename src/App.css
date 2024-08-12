@@ -39,15 +39,6 @@ a:hover {
   border: solid 1px var(--main-color);
   transform: translateY(-7px);
 }
-.product .btn {
-  transition: transform 1s, opacity 1s;
-  transform: translateY(100%);
-  opacity: 0;
-}
-.product:hover .btn {
-  opacity: 1;
-  transform: translateY(0%);
-}
 .font-sm {
   font-size: 14px;
 }
