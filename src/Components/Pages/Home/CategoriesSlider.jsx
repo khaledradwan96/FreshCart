@@ -7,15 +7,36 @@ import Slider from "react-slick";
 export default function CategoriesSlider() {
     const [categories, setCategories] = useState([])
     // react-slick-slider
-    var settings = {
+    const settings = {
         dots: true,
         infinite: true,
-        slidesToShow: 8,
-        slidesToScroll: 5,
+        slidesToShow: 7,
+        slidesToScroll: 3,
         autoplay: true,
         autoplaySpeed: 2000,
         pauseOnHover: true,
         arrows: false,
+        initialSlide: 0,
+        responsive: [
+            {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 5
+                }
+            },
+            {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 3
+                }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2
+                }
+            }
+        ]
     };
 
     async function getCategories() {
@@ -33,7 +54,7 @@ export default function CategoriesSlider() {
         <Slider {...settings} className='mb-10'>
             {categories.map((category, i)=>
                 <div key={i}>
-                    <img src={category.image} className='h-[100px]' alt="" />
+                    <img src={category.image} className='h-[100px] w-full' alt="" />
                     <h4 className='font-light mt-1'>{category.name}</h4>
                 </div>
             )}

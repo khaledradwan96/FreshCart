@@ -22,16 +22,16 @@ export default function MainSlider() {
 
     return <>
         <div className="row mb-6">
-            <div className='w-2/3'>
+            <div className='w-full md:w-2/3 mb-10'>
                 {/* ========== react-slick-slider ========== */}
                 <Slider {...settings}>
-                    <img src={slider01}  className='h-[300px]' alt="" />
-                    <img src={slider02}  className='h-[300px]' alt="" />
+                    <img src={slider01}  className='md:h-[300px] w-full' alt="" />
+                    <img src={slider02}  className='md:h-[300px] w-full' alt="" />
                 </Slider>
             </div>
-            <div className="w-1/3">
-                <img src={banner01} className='h-[150px]' alt="" />
-                <img src={banner02} className='h-[150px]' alt="" />
+            <div className="w-full md:w-1/3">
+                <img src={banner01} className='md:h-[150px] w-full' alt="" />
+                <img src={banner02} className='md:h-[150px] w-full' alt="" />
             </div>
         </div>
     </>
