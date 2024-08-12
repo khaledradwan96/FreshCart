@@ -11,6 +11,8 @@ import { toast } from 'react-hot-toast';
 export default function RecentProducts() {
   let {addProduct} = useContext(CartContext)
   const [loading, setLoading] = useState(false)
+  const [btnLoading, setBtnLoading] = useState(false)
+  const [productId, setProductId] = useState(null)
   const [recentProducts, setRecentProducts] = useState([])
 
   async function getRecentProducts(){
@@ -22,6 +24,8 @@ export default function RecentProducts() {
   }
 
   async function addProductToCart(productId) {
+    setBtnLoading(true)
+    setProductId(productId)
     let response = await addProduct(productId)
     if(response.data.status == 'success'){
       toast.success(response.data.message, {
@@ -29,10 +33,11 @@ export default function RecentProducts() {
         style: {
           minWidth: '370px',
         }
-        });
+      });
     }else{
       toast.error(response.data.message);
     }
+    setBtnLoading(false)
   }
 
   useEffect(()=>{
@@ -55,7 +60,8 @@ export default function RecentProducts() {
                       </div>
                   </Link>
                   <button onClick={()=> addProductToCart(product.id)} className='btn bg-main w-full'>
-                    <i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i>
+                    {btnLoading && productId == product.id ? <i className="fa-solid fa-spinner fa-spin"></i> 
+                      : <span><i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i></span>}
                   </button>
                 </div>
           </div>

@@ -1,14 +1,21 @@
 // ProductDetails.jsx
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Slider from "react-slick";
+import { CartContext } from '../../Context/CartContext';
+import { toast } from 'react-hot-toast';
 
 
 export default function ProductDetails() {
     const [productDetails, setProductDetails] = useState({})
     const [relatedProducts, setRelatedProducts] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [productId, setProductId] = useState(null)
+    let {addProduct} = useContext(CartContext)
+
+
 
     let {id, category}  = useParams()
     // react-slick-slider
@@ -36,12 +43,30 @@ export default function ProductDetails() {
         let filteredProduct = allProducts.filter((product)=> product.category.name == category)
         setRelatedProducts(filteredProduct)
     }
+    
+    async function addProductToCart(productId) {
+        setLoading(true)
+        setProductId(productId)
+        let response = await addProduct(productId)
+        if(response.data.status == 'success'){
+            toast.success(response.data.message, {
+                position: 'bottom-center',
+                style: {
+                minWidth: '370px',
+                }
+            });
+        }else{
+        toast.error(response.data.message);
+        }
+        setLoading(false)
+    }
 
     useEffect(()=>{
         getProductDetails(id)
         getRelatedProduct()
     },[id, category])
     return <>
+        {/* ==================== Product Details ==================== */}
         <div className='row items-center pb-5'>
             <div className="sm:w-1/4 p-2">
                 {/* ========== react-slick-slider ========== */}
@@ -60,13 +85,18 @@ export default function ProductDetails() {
                         <span>{productDetails.price} EGP</span>
                         <span><i className='fa-solid fa-star text-yellow-300'></i>{productDetails.ratingsAverage}</span>
                     </div>
-                    <button className='btn bg-main w-full'>
-                        <i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i>
+                    <button onClick={()=> addProductToCart(productDetails.id)} className='btn bg-main w-full'>
+                        {loading ? <i className="fa-solid fa-spinner fa-spin"></i> 
+                            : <span><i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i></span>
+                        }
                     </button>
                 </div>
             </div>
         </div>
+
         <hr/>
+
+        {/* ==================== Related Product ==================== */}
         <h2 className='text-main text-xl my-5 font-bold'>Related Product</h2>
         <div className="row">
             {relatedProducts.map((product)=>
@@ -80,8 +110,9 @@ export default function ProductDetails() {
                             <span>{product.price} EGP</span>
                             <span><i className='fa-solid fa-star text-yellow-300'></i>{product.ratingsAverage}</span>
                             </div>
-                            <button className='btn bg-main w-full'>
-                            <i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i>
+                            <button onClick={()=> addProductToCart(product.id)} className='btn bg-main w-full'>
+                                {loading && productId == product.id ? <i className="fa-solid fa-spinner fa-spin"></i> 
+                                : <span><i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i></span>}
                             </button>
                         </div>
                     </Link>
