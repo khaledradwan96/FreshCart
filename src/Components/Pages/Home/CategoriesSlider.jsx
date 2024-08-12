@@ -3,9 +3,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
+import LoadingSpain from '../LoadingSpain';
 
 export default function CategoriesSlider() {
     const [categories, setCategories] = useState([])
+    const [loading, setLoading] = useState(false)
     // react-slick-slider
     const settings = {
         dots: true,
@@ -40,24 +42,31 @@ export default function CategoriesSlider() {
     };
 
     async function getCategories() {
+        setLoading(true)
         const api = `https://ecommerce.routemisr.com/api/v1/categories`
         let {data} = await axios.get(api)
         setCategories(data.data)
+        setLoading(false)
     }
 
     useEffect(()=>{
         getCategories()
     },[])
     return <>
+        
         <h2 className='text-xl text-main mb-2'>Shop Popular Categories</h2>
         {/* ========== react-slick-slider ========== */}
-        <Slider {...settings} className='mb-10'>
-            {categories.map((category, i)=>
-                <div key={i}>
-                    <img src={category.image} className='h-[100px] w-full' alt="" />
-                    <h4 className='font-light mt-1'>{category.name}</h4>
-                </div>
-            )}
-        </Slider>
+        {loading ? <LoadingSpain/>
+                            
+            : <Slider {...settings} className='mb-10'>
+                {categories.map((category, i)=>
+                    <div key={i}>
+                        <img src={category.image} className='h-[100px] w-full' alt="" />
+                        <h4 className='font-light mt-1'>{category.name}</h4>
+                    </div>
+                )}
+            </Slider>
+        }
     </>
+    
 }

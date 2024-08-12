@@ -3,14 +3,19 @@
 
 import React , { useState , useEffect , useContext} from 'react'
 import { CartContext } from '../../Context/CartContext';
+import LoadingSpain from '../Pages/LoadingSpain';
 
 export default function Cart() {
+    const [loading, setLoading] = useState(false)
     let {getLoggedCart} = useContext(CartContext)
-const [cartItems, setCartItems] = useState(null)
+    const [cartItems, setCartItems] = useState(null)
+
     async function getCartItems(){
+        setLoading(true)
         let response = await getLoggedCart()
         console.log(response?.data?.data)
         setCartItems(response?.data?.data)
+        setLoading(false)
     }
     useEffect(()=> {
         getCartItems()
@@ -29,38 +34,39 @@ const [cartItems, setCartItems] = useState(null)
                     </tr>
                 </thead>
                 <tbody>
-                    {cartItems?.products.map((product, i)=>
-                        <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td className="p-4">
-                                <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full mx-auto" alt="Apple Watch" />
-                            </td>
-                            <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                {product.product.title}
-                            </td>
-                            <td className="px-6 py-4">
-                                <div className="flex items-center justify-center">
-                                    <button className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                                        <i className="fa-solid fa-minus"></i>
-                                    </button>
-                                    <div><span>{product.count}</span></div>
-                                    <button className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                                        <i className="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                {product.price} EGP
-                            </td>
-                            <td className="px-6 py-4">
-                                <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
-                            </td>
-                        </tr>
-                    )}
+                    {loading ? <LoadingSpain/> : 
+                            cartItems?.products.map((product, i)=>
+                                <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td className="p-4">
+                                        <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full mx-auto" alt="Apple Watch" />
+                                    </td>
+                                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                                        {product.product.title}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center justify-center">
+                                            <button className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                                                <i className="fa-solid fa-minus"></i>
+                                            </button>
+                                            <div><span>{product.count}</span></div>
+                                            <button className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                                                <i className="fa-solid fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                                        {product.price} EGP
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <a href="#" className="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                                    </td>
+                                </tr>)
+                    }
                 </tbody>
             </table>
-            <h3 className='text-xl font-bold text-gray-500 text-center p-5'>
-                Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
-            </h3>
+            <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
+                    Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
+                    </h3> 
         </div>
     </>
 }
