@@ -44,7 +44,16 @@ export function CartContextProvider(props){
         .catch((error)=> error)
     }
 
-    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct}}>
+    function deleteProduct(productId){
+        const api = `https://ecommerce.routemisr.com/api/v1/cart/${productId}`;
+        return axios.delete(api, {
+            headers: headers
+        })
+        .then((response)=> response)
+        .catch((error)=> error)
+    }
+
+    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct, deleteProduct}}>
                 {props.children}
             </CartContext.Provider>
 }
