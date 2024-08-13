@@ -1,12 +1,12 @@
 // RecentProducts.jsx
-/* eslint-disable no-unused-vars */
 
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LoadingSpain from '../LoadingSpain';
 import { CartContext } from '../../../Context/CartContext';
 import { toast } from 'react-hot-toast';
+
 
 export default function RecentProducts() {
   let {addProduct} = useContext(CartContext)

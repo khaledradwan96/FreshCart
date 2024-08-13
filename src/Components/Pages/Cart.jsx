@@ -27,6 +27,12 @@ export default function Cart() {
         }else{
             toast.error(response.data.status);
         }
+        for(let i = 0 ; i < response.data.data.products.length; i++){
+            if(response.data.data.products[i].count < 0){
+                deleteCartProduct(productId)
+            }
+        }
+
     }
 
     async function deleteCartProduct(productId) {
@@ -65,7 +71,7 @@ export default function Cart() {
                         <tr key={product.product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             {/* ========== Product img ========== */}
                             <td className="p-4">
-                                <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full mx-auto" alt="Apple Watch" />
+                                <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full mx-auto" />
                             </td>
                             {/* ========== Product Title ========== */}
                             <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">

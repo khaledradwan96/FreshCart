@@ -15,9 +15,8 @@ export default function ProductDetails() {
     const [productId, setProductId] = useState(null)
     let {addProduct} = useContext(CartContext)
 
-
-
     let {id, category}  = useParams()
+
     // react-slick-slider
     var settings = {
         dots: true,
@@ -65,18 +64,19 @@ export default function ProductDetails() {
         getProductDetails(id)
         getRelatedProduct()
     },[id, category])
+
     return <>
         {/* ==================== Product Details ==================== */}
         <div className='row items-center pb-5'>
-            <div className="sm:w-1/4 p-2">
+            <div className="w-full sm:w-1/4 p-2">
                 {/* ========== react-slick-slider ========== */}
                 <Slider {...settings}>
                     {productDetails?.images?.map((src, i)=>
-                        <img key={i} src={src} className='w-full cursor-pointer' alt="" />
+                        <img key={i} src={src} className='cursor-pointer' alt="" />
                     )}
                 </Slider>
             </div>
-            <div className="sm:w-3/4">
+            <div className="w-full sm:w-3/4">
                 <div className='p-5'>
                     <h4 className='text-2xl'>{productDetails.title}</h4>
                     <p className='text-xl text-gray-500'>{productDetails.description}</p>
