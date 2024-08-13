@@ -17,10 +17,9 @@ export default function NavBar() {
         navigate('/login')
     }
 
-    function navbarShow(){
+    function navbarToggle(){
         console.log('hi')
         let navbarContainer = document.getElementById('navbarContainer')
-        console.log(navbarContainer)
         navbarContainer.classList.toggle('hidden')
     }
 
@@ -29,7 +28,7 @@ export default function NavBar() {
             <div className='container mx-auto p-4 flex flex-wrap flex-row justify-between items-center'>
                 <div className='w-full sm:w-fit flex flex-row justify-between'>
                     <Link to='' className='logo p-2'><img width={110} src={logo}/></Link>
-                    <button className='sm:hidden' onClick={navbarShow}>
+                    <button className='sm:hidden' onClick={navbarToggle}>
                         <i className="fa-solid fa-bars"></i>
                     </button>
                 </div>

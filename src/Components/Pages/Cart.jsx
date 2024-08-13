@@ -1,13 +1,13 @@
 // Cart.jsx
 
-
 import { useState , useEffect , useContext} from 'react'
 import { CartContext } from '../../Context/CartContext';
 import LoadingSpain from '../Pages/LoadingSpain';
+import { toast } from 'react-hot-toast';
 
 export default function Cart() {
     const [loading, setLoading] = useState(false)
-    let {getLoggedCart} = useContext(CartContext)
+    let {getLoggedCart, updateProduct} = useContext(CartContext)
     const [cartItems, setCartItems] = useState(null)
 
     async function getCartItems(){
@@ -16,9 +16,23 @@ export default function Cart() {
         setCartItems(response?.data?.data)
         setLoading(false)
     }
+
+    async function updateCartProduct(productId, count) {
+        let response = await updateProduct(productId, count)
+        setCartItems(response?.data?.data)
+        if(response.data.status == 'success'){
+            toast.success('Product updated success', {
+                position: 'bottom-center',
+            });
+        }else{
+            toast.error(response.data.status);
+        }
+    }
+
     useEffect(()=> {
         getCartItems()
     },[])
+
     return <>
         <h2 className='text-2xl font-bold text-main mb-3'>Shop Now</h2>
         
@@ -35,8 +49,8 @@ export default function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cartItems?.products.map((product, i)=>
-                        <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    {cartItems?.products.map((product)=>
+                        <tr key={product.product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td className="p-4">
                                 <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full mx-auto" alt="Apple Watch" />
                             </td>
@@ -45,11 +59,11 @@ export default function Cart() {
                             </td>
                             <td className="px-6 py-4">
                                 <div className="flex items-center justify-center">
-                                    <button className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                                    <button onClick={()=> updateCartProduct(product.product.id, product.count - 1)} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                         <i className="fa-solid fa-minus"></i>
                                     </button>
                                     <div><span>{product.count}</span></div>
-                                    <button className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                                    <button onClick={()=> updateCartProduct(product.product.id, product.count + 1)} className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                         <i className="fa-solid fa-plus"></i>
                                     </button>
                                 </div>

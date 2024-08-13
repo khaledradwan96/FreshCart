@@ -31,7 +31,20 @@ export function CartContextProvider(props){
         .then((response)=> response)
         .catch((error)=> error)
     }
-    return <CartContext.Provider value={{getLoggedCart, addProduct}}>
+
+    function updateProduct(productId, count){
+        const api = `https://ecommerce.routemisr.com/api/v1/cart/${productId}`;
+        return axios.put(api, {
+            'count': count
+        },
+        {
+            headers: headers
+        })
+        .then((response)=> response)
+        .catch((error)=> error)
+    }
+
+    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct}}>
                 {props.children}
             </CartContext.Provider>
 }
