@@ -53,7 +53,19 @@ export function CartContextProvider(props){
         .catch((error)=> error)
     }
 
-    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct, deleteProduct}}>
+    function checkoutCart(cartId, url, checkoutValues){
+        const api = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`;
+        return axios.post(api, {
+            'shippingAddress': checkoutValues
+        },
+        {
+            headers: headers
+        })
+        .then((response)=> response)
+        .catch((error)=> error)
+    }
+
+    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct, deleteProduct, checkoutCart}}>
                 {props.children}
             </CartContext.Provider>
 }

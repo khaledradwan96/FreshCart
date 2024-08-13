@@ -4,6 +4,7 @@ import { useState , useEffect , useContext} from 'react'
 import { CartContext } from '../../Context/CartContext';
 import LoadingSpain from '../Pages/LoadingSpain';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
     const [loading, setLoading] = useState(false)
@@ -32,7 +33,6 @@ export default function Cart() {
                 deleteCartProduct(productId)
             }
         }
-
     }
 
     async function deleteCartProduct(productId) {
@@ -103,7 +103,10 @@ export default function Cart() {
             </table>
             <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
                     Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
-                    </h3> 
+            </h3> 
         </div>
+        <button className='btn w-full bg-main'>
+            <Link to={'/checkout'}>Check Out</Link>
+        </button>
     </>
 }
