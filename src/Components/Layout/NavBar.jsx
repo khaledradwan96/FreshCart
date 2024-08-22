@@ -18,46 +18,102 @@ export default function NavBar() {
     }
 
     function navbarToggle(){
-        console.log('hi')
         let navbarContainer = document.getElementById('navbarContainer')
+        let registerContainer = document.getElementById('registerContainer')
         navbarContainer.classList.toggle('hidden')
+        registerContainer.classList.toggle('hidden')
     }
 
+    function languageToggle(){
+        let languageContainer = document.getElementById('languageContainer')
+        languageContainer.classList.toggle('hidden')
+    }
+
+    function navBarFixed(){
+        let mainHeaderHeight = document.getElementById('mainHeader').offsetHeight
+        let navContainer = document.getElementById('navContainer')
+        if(window.screenY > mainHeaderHeight){
+            navContainer.classList.add('fixed')
+        }else{
+            navContainer.classList.remove('fixed')
+        }
+    }
+    window.addEventListener('scroll', navBarFixed)
+    
     return <>
-        <nav className='bg-gray-300 fixed top-0 left-0 right-0 z-50'>
-            <div className='container mx-auto p-4 flex flex-wrap flex-row justify-between items-center'>
-                <div className='w-full sm:w-fit flex flex-row justify-between'>
-                    <Link to='' className='logo p-2'><img width={110} src={logo}/></Link>
-                    <button className='sm:hidden' onClick={navbarToggle}>
-                        <i className="fa-solid fa-bars"></i>
+        <header id='mainHeader' className='bg-black text-white p-3'>
+            <div className='flex justify-center relative'>
+                <h3 className='w-2/4 text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+                    <Link to='' className='ms-2 underline font-bold'>ShopNow</Link>
+                </h3>
+                <div className='absolute top-0 right-5'>
+                    <button onClick={languageToggle}>
+                        English
+                        <i className="ms-2 fa-solid fa-chevron-down" />
+                    </button>
+                    <ul id='languageContainer' className='hidden bg-gray-500 p-3'>
+                        <li>English</li>
+                        <li>Arabic</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <nav id='navContainer' className='bg-gray-200 top-0 left-0 right-0 z-50'>
+            <div className='container mx-auto p-4 flex flex-wrap flex-col lg:flex-row lg:justify-between lg:items-center'>
+                <div className='w-full lg:w-fit flex flex-row justify-between'>
+                    <Link to='' className='logo p-2'><img width={150} src={logo}/></Link>
+                    <button className='lg:hidden' onClick={navbarToggle}>
+                        <i className="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
-                <div id='navbarContainer' className='hidden sm:flex sm:flex-row'>
-                    <ul id='navbar' className='flex flex-col sm:flex-row'>
+                <div id='navbarContainer' className='hidden lg:flex'>
+                    <ul id='navbar' className='flex flex-col lg:flex-row'>
                         {userLogin !== null ? 
                             <>
-                                <li className='p-2'><NavLink to='cart'>Cart</NavLink></li>
+                                <li className='p-2'><NavLink to=''>Home</NavLink></li>
+                                <li className='p-2'><NavLink to='contact'>Contact</NavLink></li>
+                                <li className='p-2'><NavLink to='about'>About</NavLink></li>
                                 <li className='p-2'><NavLink to='products'>Products</NavLink></li>
                                 <li className='p-2'><NavLink to='categories'>Categories</NavLink></li>                        
                                 <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
                             </> : null}
                     </ul>
-                    <ul className='flex flex-row items-center'>
-                        <li id='social' className='hidden md:block'>
-                                <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
-                                <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>
-                                <Link to='#'><i className='fab p-2 fa-tiktok'></i></Link>
-                                <Link to='#'><i className='fab p-2 fa-spotify'></i></Link>
-                            </li>
+                </div>
+                <div id='registerContainer' className='hidden lg:flex'>
+                    <ul className='flex flex-row justify-center items-center'>
                         {userLogin === null ? 
                             <>
                                 <li className='p-2 me-2 border border-green-700 hover:bg-green-700 rounded-lg text-white duration-300'>
-                                    <Link to='register'>Register</Link></li>
+                                    <Link to='register'>Register</Link>
+                                </li>
                                 <li className='p-2 border border-green-700 hover:bg-green-700 rounded-lg text-white duration-300'>
-                                    <Link to='login'>Login</Link></li>
+                                    <Link to='login'>Login</Link>
+                                </li>
                             </> : 
-                                <li className='p-2 border border-green-700 hover:bg-green-700 rounded-lg text-white duration-300'>
-                                    <Link onClick={logOut}>Logout</Link></li>
+                            <>
+                                <li>
+                                    <button>
+                                        <Link to='wishlist'>
+                                            <i className="fa-solid fa-heart text-red-700 text-xl"></i>
+                                        </Link>
+                                    </button>
+                                </li>
+                                <li id="cart" className="me-4">
+                                    <button type="button" className="relative p-3">
+                                        <Link to='cart'>
+                                            <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
+                                            <span id="cartCount" 
+                                            className="absolute inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-lg -top-2 -end-2 dark:border-gray-900">
+                                                0
+                                            </span>
+                                        </Link>
+                                    </button>
+                                </li>
+                                <li className='p-2 border border-green-700 hover:bg-green-700 rounded-lg hover:text-white duration-300'>
+                                    <Link onClick={logOut}>Logout</Link>
+                                </li>
+                            </>
                             }
                     </ul> 
                 </div>

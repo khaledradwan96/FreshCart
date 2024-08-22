@@ -19,6 +19,9 @@ import { CartContextProvider } from './Context/CartContext'
 import { Toaster } from 'react-hot-toast';
 import Checkout from './Components/Pages/Checkout'
 import AllOrders from './Components/Pages/AllOrders'
+import Contact from './Components/Pages/Contact'
+import About from './Components/Pages/About'
+import Wishlist from './Components/Pages/Wishlist'
 
 
 
@@ -30,7 +33,10 @@ let router = createBrowserRouter([
 
     {path: 'productDetails/:id/:category', element: <ProtectRoute> <ProductDetails/> </ProtectRoute>},
     
+    {path: 'contact', element: <ProtectRoute> <Contact/> </ProtectRoute>},
+    {path: 'about', element: <ProtectRoute> <About/> </ProtectRoute>},
     {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
+    {path: 'wishlist', element: <ProtectRoute> <Wishlist/> </ProtectRoute>},
     {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
     {path: 'categories', element: <ProtectRoute> <Categories/> </ProtectRoute>},
     {path: 'checkout', element: <ProtectRoute> <Checkout/> </ProtectRoute>},

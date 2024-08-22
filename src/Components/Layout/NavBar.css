@@ -22,10 +22,3 @@ nav #navbar a.active::after {
   width: 100%;
   left: 0;
 }
-
-nav #social i {
-  transition: 0.3s;
-}
-nav #social a:hover {
-  color: var(--main-color);
-}

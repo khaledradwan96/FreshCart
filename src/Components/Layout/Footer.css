@@ -1,0 +1,6 @@
+#social i {
+  transition: 0.3s;
+}
+#social a:hover {
+  color: var(--main-color);
+}
