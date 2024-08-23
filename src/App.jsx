@@ -3,27 +3,27 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Layout from './Components/Layout/Layout'
-import Home from './Components/Pages/Home/Home'
-import Cart from './Components/Pages/Cart'
-import Brands from './Components/Pages/Brands'
-import Categories from './Components/Pages/Categories'
-import ProductDetails from './Components/Pages/ProductDetails'
-import Products from './Components/Pages/Products'
-import Register from './Components/Authentication/Register'
-import Login from './Components/Authentication/Login'
-import ProtectRoute from './Components/Authentication/ProtectRoute'
-import Notfound from './Components/Notfound/Notfound'
+import Home from './Pages/Home/Home'
+import Cart from './Pages/Cart'
+import Brands from './Pages/Brands'
+import Categories from './Pages/Categories'
+import ProductDetails from './Pages/ProductDetails'
+import Products from './Pages/Products'
+import Register from './Pages/Authentication/Register'
+import Login from './Pages/Authentication/Login'
+import ProtectRoute from './Pages/Authentication/ProtectRoute'
+import Notfound from './Pages/Notfound'
 import UserContextProvider from './Context/UserContext'
 import { CartContextProvider } from './Context/CartContext'
 
 import { Toaster } from 'react-hot-toast';
-import Checkout from './Components/Pages/Checkout'
-import AllOrders from './Components/Pages/AllOrders'
-import Contact from './Components/Pages/Contact'
-import About from './Components/Pages/About'
-import Wishlist from './Components/Pages/Wishlist'
-import ForgetPassword from './Components/Authentication/ForgetPassword'
-import ResetPassword from './Components/Authentication/ResetPassword'
+import Checkout from './Pages/Checkout'
+import AllOrders from './Pages/AllOrders'
+import Contact from './Pages/Contact'
+import About from './Pages/About'
+import Wishlist from './Pages/Wishlist'
+import ForgetPassword from './Pages/Authentication/ForgetPassword'
+import ResetPassword from './Pages/Authentication/ResetPassword'
 
 
 let router = createBrowserRouter([
@@ -40,7 +40,7 @@ let router = createBrowserRouter([
     {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
     {path: 'categories', element: <ProtectRoute> <Categories/> </ProtectRoute>},
     {path: 'checkout', element: <ProtectRoute> <Checkout/> </ProtectRoute>},
-    {path: 'allorders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
+    {path: 'allrders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
     {path: 'register', element: <Register/>},
     {path: 'login', element: <Login/>},
     {path: 'ForgetPassword', element: <ForgetPassword/>},

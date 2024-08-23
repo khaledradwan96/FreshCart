@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LoadingSpain from '../LoadingSpain';
-import { CartContext } from '../../../Context/CartContext';
+import { CartContext } from '../../Context/CartContext';
 import { toast } from 'react-hot-toast';
 
 

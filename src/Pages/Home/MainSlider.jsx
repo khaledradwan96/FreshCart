@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Slider from "react-slick";
-import slider01 from './../../../assets/images/slider-image-2.jpeg'
-import slider02 from './../../../assets/images/slider-image-3.jpeg'
-import banner01 from './../../../assets/images/grocery-banner.png'
-import banner02 from './../../../assets/images/grocery-banner-2.jpeg'
+import slider01 from './../../assets/images/slider-image-2.jpeg'
+import slider02 from './../../assets/images/slider-image-3.jpeg'
+import banner01 from './../../assets/images/grocery-banner.png'
+import banner02 from './../../assets/images/grocery-banner-2.jpeg'
 
 export default function MainSlider() {
     // react-slick-slider

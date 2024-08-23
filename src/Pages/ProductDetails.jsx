@@ -4,7 +4,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Slider from "react-slick";
-import { CartContext } from '../../Context/CartContext';
+import { CartContext } from '../Context/CartContext';
 import { toast } from 'react-hot-toast';
 
 

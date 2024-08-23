@@ -1,7 +1,7 @@
 // Cart.jsx
 
 import { useState , useEffect , useContext} from 'react'
-import { CartContext } from '../../Context/CartContext';
+import { CartContext } from '../Context/CartContext';
 import LoadingSpain from '../Pages/LoadingSpain';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
