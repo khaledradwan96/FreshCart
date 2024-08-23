@@ -9,11 +9,9 @@ import { UserContext } from '../../Context/UserContext'
 export default function ResetPassword() {
     let {setUserLogin} = useContext(UserContext)
     let navigate = useNavigate()
-    const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
-
-    async function submitForm(e){
+    async function resetPassword(e){
         e.preventDefault()
         let userEmail = document.getElementById('newEmail').value
         let newPassword =  document.getElementById('newPassword').value
@@ -23,26 +21,21 @@ export default function ResetPassword() {
             'email' : userEmail,
             'newPassword' : newPassword
         })
-        console.log('greet')
-        console.log(response)
-        // localStorage.setItem('userToken', resp?.data?.token) // storage token in localStorage
-        // setUserLogin(resp?.data?.token) // storage token in Context
-        // navigate('/') // to go home page
-        console.log('good')
-        setLoading(false) // make submit stop loading
-
         .then((resp)=>{
-            navigate('../')
+            console.log('greet')
+            console.log(resp)
+            localStorage.setItem('userToken', resp?.data?.token)
+            setUserLogin(resp?.data?.token)
+            navigate('../login')
             setLoading(false)
         })
         .catch((resp)=>{
-            console.log('Wrong')
-            let resultVerifyCode = document.getElementById('resultVerifyCode')
-            resultVerifyCode.innerHTML = 'Wrong Code'
+            console.log('wrong')
+            let resultReset = document.getElementById('resultReset')
+            resultReset.innerHTML = resp?.response?.data.message
             setLoading(false)
         })
     }
-
 
     return <>
         <div className='mx-auto'>
@@ -66,7 +59,7 @@ export default function ResetPassword() {
                 </div>
                 {/* ========== Submit input ========== */}
                 <div className='flex flex-row items-center justify-between'>
-                    <button type="submit" onClick={submitForm}
+                    <button type="submit" onClick={resetPassword}
                             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                             {loading ? 
                                 <>
@@ -74,12 +67,8 @@ export default function ResetPassword() {
                                 </>
                                 : 'Reset Password'}
                     </button>
+                <p id='resultReset' className='text-lg font-bold text-red-600'></p>
                 </div>
-                {error ?
-                    <div className="flex items-center p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-200 dark:text-red-900" role="alert">
-                        <div>{error}</div>
-                    </div>
-                : null}
             </form>
         </div>
     </>
