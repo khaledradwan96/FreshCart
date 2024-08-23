@@ -3,7 +3,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
-import LoadingSpain from '../LoadingSpain';
+import LoadingBars from '../../Components/LoadingBars';
 
 export default function CategoriesSlider() {
     const [categories, setCategories] = useState([])
@@ -56,7 +56,7 @@ export default function CategoriesSlider() {
         
         <h2 className='text-xl text-main mb-2'>Shop Popular Categories</h2>
         {/* ========== react-slick-slider ========== */}
-        {loading ? <LoadingSpain/>
+        {loading ? <LoadingBars/>
             : <Slider {...settings} className='mb-10'>
                 {categories.map((category, i)=>
                     <div key={i}>

@@ -19,8 +19,8 @@ export default function NavBar() {
 
     function navbarToggle(){
         let navbarContainer = document.getElementById('navbarContainer')
-        let registerContainer = document.getElementById('registerContainer')
         navbarContainer.classList.toggle('hidden')
+        let registerContainer = document.getElementById('registerContainer')
         registerContainer.classList.toggle('hidden')
     }
 
@@ -84,10 +84,14 @@ export default function NavBar() {
                                 </li>
                             </> : 
                             <>
-                                <li>
+                                <li id='whish'>
                                     <button>
-                                        <Link to='wishlist'>
-                                            <i className="fa-solid fa-heart text-red-700 text-xl"></i>
+                                        <Link to='wishlist' className="relative p-3">
+                                            <i className="fa-regular fa-heart text-red-700 text-xl"></i>
+                                            <span id="wishCount" 
+                                            className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                                            0
+                                            </span>
                                         </Link>
                                     </button>
                                 </li>
@@ -96,15 +100,15 @@ export default function NavBar() {
                                         <Link to='cart'>
                                             <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
                                             <span id="cartCount" 
-                                            className="absolute inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-lg -top-2 -end-2 dark:border-gray-900">
-                                                0
+                                            className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                                            0
                                             </span>
                                         </Link>
                                     </button>
                                 </li>
                                 <li id="user" className="">
                                     <button type="button" className="relative p-3">
-                                        <Link to='account/'>
+                                        <Link to='account'>
                                             <i className="fa-solid fa-user  text-gray-700 text-xl"></i>
                                         </Link>
                                     </button>

@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 import Slider from "react-slick";
 import { CartContext } from '../Context/CartContext';
 import { toast } from 'react-hot-toast';
+import AddressTitle from '../Components/AddressTitle';
 
 
 export default function ProductDetails() {
@@ -66,6 +67,7 @@ export default function ProductDetails() {
     },[id, category])
 
     return <>
+        <AddressTitle/>
         {/* ==================== Product Details ==================== */}
         <div className='row items-center pb-5'>
             <div className="w-full sm:w-1/4 p-2">

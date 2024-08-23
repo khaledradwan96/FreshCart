@@ -13,7 +13,7 @@ import { InfinitySpin } from 'react-loader-spinner'
 
 
 
-export default function LoadingSpain() {
+export default function LoadingInfinity() {
     return <>
         <div className='w-full flex justify-center items-center'>
             <InfinitySpin

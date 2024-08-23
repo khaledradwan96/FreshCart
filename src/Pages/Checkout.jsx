@@ -3,6 +3,7 @@
 import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
 import { CartContext } from '../Context/CartContext'
+import AddressTitle from '../Components/AddressTitle'
 
 
 export default function Checkout() {
@@ -32,6 +33,7 @@ export default function Checkout() {
     }
 
     return <>
+        <AddressTitle/>
         <div className='mx-auto'>
             <h2 className='font-bold text-4xl text-main text-center'>Checkout</h2>
             <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto py-5">

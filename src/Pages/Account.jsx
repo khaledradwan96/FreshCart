@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect} from 'react'
+import AddressTitle from '../Components/AddressTitle'
 
 export default function Account() {
     const [Count, setCount] = useState(0)
@@ -9,16 +10,7 @@ export default function Account() {
 
     }, [])
     return <>
-        <div className='flex justify-between mb-20'>
-            <div>
-                <span className='text-[#00000080]'>Home / </span>
-                <span className='text-black'>My Account</span>
-            </div>
-            <div>
-                <span>Welcome !</span>
-                <span id='userName'></span>
-            </div>
-        </div>
+        <AddressTitle/>
         <div className='flex flex-col sm:flex-row gap-12 sm:gap-4 justify-between'>
             <div className='border rounded sm:border-none p-5 pt-10'>
                 <h3 className='font-bold'>Manage My Account</h3>

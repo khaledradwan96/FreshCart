@@ -30,6 +30,7 @@ export default function Register() {
             .then((resp)=>{ 
                 localStorage.setItem('userToken', resp?.data?.token) // storage token in localStorage
                 setUserLogin(resp?.data?.token) // storage token in Context
+                localStorage.setItem('userName', resp?.data?.user.name)
                 navigate('/login') // go to login page
                 setLoading(false) // make submit stop loading
             })

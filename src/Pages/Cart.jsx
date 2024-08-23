@@ -2,9 +2,10 @@
 
 import { useState , useEffect , useContext} from 'react'
 import { CartContext } from '../Context/CartContext';
-import LoadingSpain from '../Pages/LoadingSpain';
+import LoadingBars from '../Components/LoadingBars';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import AddressTitle from '../Components/AddressTitle';
 
 export default function Cart() {
     const [loading, setLoading] = useState(false)
@@ -52,10 +53,10 @@ export default function Cart() {
     },[])
 
     return <>
+        <AddressTitle/>
         <h2 className='text-2xl font-bold text-main mb-3'>Shop Now</h2>
-        
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            {loading ? <LoadingSpain/> : ''}
+            {loading ? <LoadingBars/> : ''}
             <table className="text-center w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 capitalize bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr className='font-bold'>

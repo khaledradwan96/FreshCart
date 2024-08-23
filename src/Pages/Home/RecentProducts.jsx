@@ -3,7 +3,7 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import LoadingSpain from '../LoadingSpain';
+import LoadingInfinity from '../../Components/LoadingInfinity';
 import { CartContext } from '../../Context/CartContext';
 import { toast } from 'react-hot-toast';
 
@@ -46,7 +46,7 @@ export default function RecentProducts() {
 
   return <>
     <div className="row">
-      {loading ? <LoadingSpain/> :
+      {loading ? <LoadingInfinity/> :
         recentProducts.map((product)=>
           <div key={product.id} className="md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
                 <div className='shadow-md p-3 product rounded-md'>
