@@ -20,23 +20,23 @@ export default function Account() {
             </div>
         </div>
         <div className='flex flex-col sm:flex-row gap-12 sm:gap-4 justify-between'>
-            <div className='border rounded sm:border-none py-3 px-6 sm:py-0 sm:px-0'>
+            <div className='border rounded sm:border-none p-5 pt-10'>
                 <h3 className='font-bold'>Manage My Account</h3>
-                <nav className='flex flex-col gap-1 text-[#00000050] ms-5 mt-3 mb-5'>
-                    <a href="#" className='hover:text-[#DB4444] hover:font-bold duration-300'>My Profile</a>
-                    <a href="#" className='hover:text-[#DB4444] hover:font-bold duration-300'>Address Book</a>
-                    <a href="#" className='hover:text-[#DB4444] hover:font-bold duration-300'>My Payment Options</a>
+                <nav className='flex flex-col gap-1 text-[#00000050] ms-5 mt-1 mb-5'>
+                    <a href="#" className='hover:text-red-500 hover:font-bold duration-300'>My Profile</a>
+                    <a href="#" className='hover:text-red-500 hover:font-bold duration-300'>Address Book</a>
+                    <a href="#" className='hover:text-red-500 hover:font-bold duration-300'>My Payment Options</a>
                 </nav>
                 <h3 className='font-bold'>My Orders</h3>
-                <nav className='flex flex-col gap-1 text-[#00000050] ms-5 mt-3 mb-5'>
-                    <a href="#" className='hover:text-[#DB4444] hover:font-bold duration-300'>My Returns</a>
-                    <a href="#" className='hover:text-[#DB4444] hover:font-bold duration-300'>My cancellations</a>
+                <nav className='flex flex-col gap-1 text-[#00000050] ms-5 mt-1 mb-5'>
+                    <a href="#" className='hover:text-red-500 hover:font-bold duration-300'>My Returns</a>
+                    <a href="#" className='hover:text-red-500 hover:font-bold duration-300'>My cancellations</a>
                 </nav>
                 <h3 className='font-bold'>My WishList</h3>
             </div>
-            <div className='sm:w-[74.3%] py-10 px-8 lg:px-20 rounded shadow-[0_0_10px_0px_rgba(0,0,0,0.1)]'>
+            <div className='sm:w-[74.3%] p-10 rounded shadow-xl'>
                 <form>
-                    <h2 className='text-xl font-bold text-[#DB4444] mb-4'>Edit Your Profile</h2>
+                    <h2 className='text-xl font-bold text-red-500 mb-4'>Edit Your Profile</h2>
                     <div className='flex flex-col sm:flex-row sm:gap-5'>
                         <div>
                             <label htmlFor="firstName">First Name</label>
@@ -67,6 +67,16 @@ export default function Account() {
                                 className=" h-[50px] w-full rounded bg-[#F5F5F5] mb-5 px-4 placeholder:text-[#00000050]" />
                             <input type="password" id="reNewPassword" placeholder='Confirm New Password'  
                                 className=" h-[50px] w-full rounded bg-[#F5F5F5] mb-5 px-4 placeholder:text-[#00000050]" />
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-8 justify-end">
+                        <button type='reset' 
+                            className='hover:scale-105'>
+                            Cancel
+                        </button>
+                        <button type='submit' 
+                            className='bg-red-500 px-12 py-4 rounded text-[#fafafa] hover:bg-red-600'>
+                            Save Changes
+                        </button>
                     </div>
                 </form>
             </div>
