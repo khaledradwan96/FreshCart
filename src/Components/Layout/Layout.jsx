@@ -14,7 +14,7 @@ export default function Layout() {
     }, [])
     return <>
         <NavBar/>
-        <div className="container p-4 mx-auto pt-15 min-h-full">
+        <div className="container p-4 mx-auto pt-15 min-h-[70vh]">
             <Outlet/>
         </div>
         <Footer/>

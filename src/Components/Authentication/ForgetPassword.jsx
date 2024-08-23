@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import React , { useState , useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import * as Yap from 'yup'
@@ -48,7 +48,6 @@ export default function ForgetPassword() {
             "resetCode": verifyCode
         })
             .then((resp)=>{
-                console.log('good')
                 navigate('../ResetPassword')
                 setLoading2(false)
             })
