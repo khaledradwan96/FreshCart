@@ -91,7 +91,7 @@ export default function NavBar() {
                                         </Link>
                                     </button>
                                 </li>
-                                <li id="cart" className="me-4">
+                                <li id="cart">
                                     <button type="button" className="relative p-3">
                                         <Link to='cart'>
                                             <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
@@ -99,6 +99,13 @@ export default function NavBar() {
                                             className="absolute inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-lg -top-2 -end-2 dark:border-gray-900">
                                                 0
                                             </span>
+                                        </Link>
+                                    </button>
+                                </li>
+                                <li id="user" className="">
+                                    <button type="button" className="relative p-3">
+                                        <Link to='account/'>
+                                            <i className="fa-solid fa-user  text-gray-700 text-xl"></i>
                                         </Link>
                                     </button>
                                 </li>

@@ -22,15 +22,12 @@ export default function ResetPassword() {
             'newPassword' : newPassword
         })
         .then((resp)=>{
-            console.log('greet')
-            console.log(resp)
             localStorage.setItem('userToken', resp?.data?.token)
             setUserLogin(resp?.data?.token)
             navigate('../login')
             setLoading(false)
         })
         .catch((resp)=>{
-            console.log('wrong')
             let resultReset = document.getElementById('resultReset')
             resultReset.innerHTML = resp?.response?.data.message
             setLoading(false)

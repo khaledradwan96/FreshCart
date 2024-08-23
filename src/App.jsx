@@ -24,6 +24,7 @@ import About from './Pages/About'
 import Wishlist from './Pages/Wishlist'
 import ForgetPassword from './Pages/Authentication/ForgetPassword'
 import ResetPassword from './Pages/Authentication/ResetPassword'
+import Account from './Pages/Account'
 
 
 let router = createBrowserRouter([
@@ -35,12 +36,13 @@ let router = createBrowserRouter([
     
     {path: 'contact', element: <ProtectRoute> <Contact/> </ProtectRoute>},
     {path: 'about', element: <ProtectRoute> <About/> </ProtectRoute>},
-    {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
-    {path: 'wishlist', element: <ProtectRoute> <Wishlist/> </ProtectRoute>},
-    {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
     {path: 'categories', element: <ProtectRoute> <Categories/> </ProtectRoute>},
+    {path: 'brands', element: <ProtectRoute> <Brands/> </ProtectRoute>},
+    {path: 'wishlist', element: <ProtectRoute> <Wishlist/> </ProtectRoute>},
+    {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
     {path: 'checkout', element: <ProtectRoute> <Checkout/> </ProtectRoute>},
     {path: 'allrders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
+    {path: 'account', element: <ProtectRoute> <Account/> </ProtectRoute>},
     {path: 'register', element: <Register/>},
     {path: 'login', element: <Login/>},
     {path: 'ForgetPassword', element: <ForgetPassword/>},
