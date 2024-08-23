@@ -4,7 +4,7 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as Yap from 'yup'
 import { UserContext } from '../../Context/UserContext'
 
@@ -76,12 +76,23 @@ export default function Login() {
                     : null}
                 </div>
                 {/* ========== Submit input ========== */}
-                <button type="submit" 
-                        className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                        {loading ? 
-                            <i className='fa-solid fa-spinner px-1 fa-spin'></i> 
-                            : 'Submit'}
-                </button>
+                <div className='flex flex-row items-center justify-between'>
+                    <button type="submit" 
+                            className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            {loading ? 
+                                <i className='fa-solid fa-spinner px-1 fa-spin'></i> 
+                                : 'Login'}
+                    </button>
+                        <p className='text-green-600 font-bold'>
+                            <Link to='../ForgetPassword'>
+                                Forget your password?
+                            </Link>
+                        </p>
+                </div>
+                <p className='mt-3 text-center'>
+                    Not have account?
+                    <Link to='../register' className='ms-2 underline hover:underline hover:text-green-600'>Create new account</Link>
+                </p>
                 {error ?
                     <div className="flex items-center p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-200 dark:text-red-900" role="alert">
                         <div>{error}</div>

@@ -24,15 +24,10 @@ export default function NavBar() {
         registerContainer.classList.toggle('hidden')
     }
 
-    function languageToggle(){
-        let languageContainer = document.getElementById('languageContainer')
-        languageContainer.classList.toggle('hidden')
-    }
-
     function navBarFixed(){
         let mainHeaderHeight = document.getElementById('mainHeader').offsetHeight
         let navContainer = document.getElementById('navContainer')
-        if(window.screenY > mainHeaderHeight){
+        if(window.scrollY > mainHeaderHeight){
             navContainer.classList.add('fixed')
         }else{
             navContainer.classList.remove('fixed')
@@ -42,19 +37,16 @@ export default function NavBar() {
     
     return <>
         <header id='mainHeader' className='bg-black text-white p-3'>
-            <div className='flex justify-center relative'>
+            <div className='flex justify-center items-center relative'>
                 <h3 className='w-2/4 text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
                     <Link to='' className='ms-2 underline font-bold'>ShopNow</Link>
                 </h3>
-                <div className='absolute top-0 right-5'>
-                    <button onClick={languageToggle}>
-                        English
-                        <i className="ms-2 fa-solid fa-chevron-down" />
-                    </button>
-                    <ul id='languageContainer' className='hidden bg-gray-500 p-3'>
-                        <li>English</li>
-                        <li>Arabic</li>
-                    </ul>
+                <div className='absolute right-5'>
+                    <select className='bg-black'>
+                        <option>English</option>
+                        <option>Germany</option>
+                        <option>عربي</option>
+                    </select>
                 </div>
             </div>
         </header>
@@ -84,10 +76,10 @@ export default function NavBar() {
                     <ul className='flex flex-row justify-center items-center'>
                         {userLogin === null ? 
                             <>
-                                <li className='p-2 me-2 border border-green-700 hover:bg-green-700 rounded-lg text-white duration-300'>
+                                <li className='p-2 me-2 border border-green-700 hover:bg-green-700 rounded-lg hover:text-white duration-300'>
                                     <Link to='register'>Register</Link>
                                 </li>
-                                <li className='p-2 border border-green-700 hover:bg-green-700 rounded-lg text-white duration-300'>
+                                <li className='p-2 border border-green-700 hover:bg-green-700 rounded-lg hover:text-white duration-300'>
                                     <Link to='login'>Login</Link>
                                 </li>
                             </> : 

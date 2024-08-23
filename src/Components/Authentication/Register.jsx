@@ -2,9 +2,9 @@
 // Register.jsx
 
 import axios from 'axios'
-import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
 import * as Yap from 'yup'
 import { UserContext } from '../../Context/UserContext'
 
@@ -66,7 +66,8 @@ export default function Register() {
 
     return <>
         <div className='mx-auto'>
-            <h2 className='font-bold text-4xl text-main text-center'>Register Now</h2>
+            <h2 className='font-bold text-4xl text-main text-center'>Create an account</h2>
+            <p className='text-center mt-3'>Enter your details below</p>
             <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto py-5">
                 {/* ========== Name input ========== */}
                 <div className="relative z-0 w-full mb-5 group mt-5">
@@ -131,11 +132,15 @@ export default function Register() {
                 </div>
                 {/* ========== Submit input ========== */}
                 <button type="submit" 
-                        className="text-white bg-main hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        className="text-white bg-main hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         {loading ? 
                             <i className='fa-solid fa-spinner px-1 fa-spin'></i> 
-                            : 'Submit'}
+                            : 'Create Account'}
                 </button>
+                <p className='mt-3 text-center'>
+                    Already have account?
+                    <Link to='../login' className='ms-2 underline hover:underline hover:green-blue-600'>Log in</Link>
+                </p>
                 {error ?
                     <div className="flex items-center p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-200 dark:text-red-900" role="alert">
                         <div>{error}</div>

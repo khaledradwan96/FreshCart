@@ -22,10 +22,10 @@ import AllOrders from './Components/Pages/AllOrders'
 import Contact from './Components/Pages/Contact'
 import About from './Components/Pages/About'
 import Wishlist from './Components/Pages/Wishlist'
+import ForgetPassword from './Components/Authentication/ForgetPassword'
+import ResetPassword from './Components/Authentication/ResetPassword'
 
 
-
-Home
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
     {index: true, element: <ProtectRoute> <Home/> </ProtectRoute> },
@@ -43,6 +43,8 @@ let router = createBrowserRouter([
     {path: 'allorders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
     {path: 'register', element: <Register/>},
     {path: 'login', element: <Login/>},
+    {path: 'ForgetPassword', element: <ForgetPassword/>},
+    {path: 'ResetPassword', element: <ResetPassword/>},
     {path: '*', element: <Notfound/>},
   ]}
 ])
