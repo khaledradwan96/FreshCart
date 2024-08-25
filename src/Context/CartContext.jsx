@@ -7,7 +7,7 @@ import { createContext, useEffect, useState } from "react";
 export let CartContext = createContext(0)
 
 export function CartContextProvider(props){
-    let [cart, setCart] = useState(0)
+    let [cartCount, setCartCount] = useState(0)
 
     let headers = {
             token: localStorage.getItem('userToken')
@@ -55,6 +55,15 @@ export function CartContextProvider(props){
         .catch((error)=> error)
     }
 
+    function clearCart(){
+        const api = `https://ecommerce.routemisr.com/api/v1/cart`;
+        return axios.delete(api, {
+            headers: headers
+        })
+        .then((response)=> response)
+        .catch((error)=> error)
+    }
+
     function checkoutCart(cartId, url, checkoutValues){
         const api = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`;
         return axios.post(api, {
@@ -67,16 +76,16 @@ export function CartContextProvider(props){
         .catch((error)=> error)
     }
 
-    async function getCart(){
+    async function getCartCount(){ // to show number of cart items
         let response = await getLoggedCart()
-        setCart(response.data)
+        setCartCount(response.data)
     }
 
     useEffect(()=> {
-        getCart()
+        getCartCount()
     },[])
 
-    return <CartContext.Provider value={{getLoggedCart, cart, setCart, addProduct, updateProduct, deleteProduct, checkoutCart}}>
+    return <CartContext.Provider value={{getLoggedCart, cartCount, setCartCount, addProduct, updateProduct, deleteProduct, clearCart, checkoutCart}}>
                 {props.children}
             </CartContext.Provider>
 }

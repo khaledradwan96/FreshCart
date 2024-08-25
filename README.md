@@ -25,6 +25,9 @@ This project is an e-commerce platform built with React. It features a user-frie
 - Add a contact page for inquiries.
 - Add an about page for company information.
 - Add a footer to the website with relevant links and details.
+- edit toast of add product
+- fixed pug in Checkout session and pay
+- mange page of user account
 
 ## 🛠️ Technologies Used
 

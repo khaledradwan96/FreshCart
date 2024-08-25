@@ -10,7 +10,7 @@ import './NavBar.css'
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
-    let {cart} = useContext(CartContext)
+    let {cartCount} = useContext(CartContext)
     let navigate = useNavigate()
     const [loading, setLoading] = useState(false)
 
@@ -105,7 +105,7 @@ export default function NavBar() {
                                         <Link to='cart'>
                                             <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
                                             <span className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                                {cart? cart.numOfCartItems : 0}
+                                                {cartCount? cartCount.numOfCartItems : 0}
                                             </span>
                                         </Link>
                                     </button>
