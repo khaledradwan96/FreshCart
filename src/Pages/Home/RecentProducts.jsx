@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 
 
 export default function RecentProducts() {
-  let {addProduct} = useContext(CartContext)
+  let {addProduct, setCart} = useContext(CartContext)
   const [loading, setLoading] = useState(false)
   const [btnLoading, setBtnLoading] = useState(false)
   const [productId, setProductId] = useState(null)
@@ -28,6 +28,7 @@ export default function RecentProducts() {
     setProductId(productId)
     let response = await addProduct(productId)
     if(response.data.status == 'success'){
+      setCart(response.data)
       toast.success(response.data.message, {
         position: 'bottom-center',
         style: {

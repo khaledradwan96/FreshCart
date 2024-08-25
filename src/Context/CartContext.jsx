@@ -2,11 +2,13 @@
 /* eslint-disable react/prop-types */
 
 import axios from "axios";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export let CartContext = createContext(0)
 
 export function CartContextProvider(props){
+    let [cart, setCart] = useState(0)
+
     let headers = {
             token: localStorage.getItem('userToken')
     }
@@ -65,7 +67,16 @@ export function CartContextProvider(props){
         .catch((error)=> error)
     }
 
-    return <CartContext.Provider value={{getLoggedCart, addProduct, updateProduct, deleteProduct, checkoutCart}}>
+    async function getCart(){
+        let response = await getLoggedCart()
+        setCart(response.data)
+    }
+
+    useEffect(()=> {
+        getCart()
+    },[])
+
+    return <CartContext.Provider value={{getLoggedCart, cart, setCart, addProduct, updateProduct, deleteProduct, checkoutCart}}>
                 {props.children}
             </CartContext.Provider>
 }

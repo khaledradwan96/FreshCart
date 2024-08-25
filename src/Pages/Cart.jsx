@@ -9,12 +9,13 @@ import AddressTitle from '../Components/AddressTitle';
 
 export default function Cart() {
     const [loading, setLoading] = useState(false)
-    let {getLoggedCart, updateProduct, deleteProduct} = useContext(CartContext)
+    let {getLoggedCart, updateProduct, deleteProduct, cart, setCart} = useContext(CartContext)
     const [cartItems, setCartItems] = useState(null)
-
+    let items = 0
     async function getCartItems(){
         setLoading(true)
         let response = await getLoggedCart()
+        console.log(response?.data?.data)
         setCartItems(response?.data?.data)
         setLoading(false)
     }
@@ -39,6 +40,7 @@ export default function Cart() {
     async function deleteCartProduct(productId) {
         let response = await deleteProduct(productId)
         setCartItems(response?.data?.data)
+        setCart(response.data)
         if(response.data.status == 'success'){
             toast.success('Product deleted success', {
                 position: 'bottom-center',
@@ -108,14 +110,31 @@ export default function Cart() {
                 </tbody>
             </table>
             <div id='total'>
-
+                <div className='flex'>
+                    <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
+                        Number Of Cart Items <span className='text-main'>{cart.numOfCartItems}</span>
+                    </h3> 
+                    <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
+                        Total Number Of Cart Items: 
+                        <span className='text-main ms-1'>
+                            {cartItems?.products.map((product)=>
+                                {items += product.count}
+                            )}
+                            {items}
+                        </span>
+                    </h3> 
+                </div>
                 <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
                         Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
                 </h3> 
             </div>
+            <button className='btn w-full bg-main'>
+                <Link to={'/checkout'}>Check Out</Link>
+            </button>
         </div>
-        <button className='btn w-full bg-main'>
-            <Link to={'/checkout'}>Check Out</Link>
+
+        <button className='hover:bg-red-600 hover:text-white px-5 py-3 mt-5 rounded-md border border-red-600 duration-300'>
+                Clear Your Cart
         </button>
     </>
 }

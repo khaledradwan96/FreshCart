@@ -10,9 +10,8 @@ import './NavBar.css'
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
-    let {getLoggedCart} = useContext(CartContext)
+    let {cart} = useContext(CartContext)
     let navigate = useNavigate()
-    const [cartItems, setCartItems] = useState(0)
     const [loading, setLoading] = useState(false)
 
 
@@ -40,19 +39,6 @@ export default function NavBar() {
         }
     }
     window.addEventListener('scroll', navBarFixed)
-
-    async function getCartItems(){
-        setLoading(true)
-        let response = await getLoggedCart()
-        setCartItems(response?.data.numOfCartItems)
-        // console.log(response?.data?.numOfCartItems)
-        setLoading(false)
-        // => i have a problem with make number change dynamic after add or remove new product
-    }
-
-    useEffect(()=> {
-        getCartItems()
-    },[])
 
     return <>
         <header id='mainHeader' className='bg-black text-white p-3'>
@@ -119,7 +105,7 @@ export default function NavBar() {
                                         <Link to='cart'>
                                             <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
                                             <span className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                                {cartItems}
+                                                {cart? cart.numOfCartItems : 0}
                                             </span>
                                         </Link>
                                     </button>
