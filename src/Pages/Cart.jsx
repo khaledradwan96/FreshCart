@@ -25,7 +25,7 @@ export default function Cart() {
         setCartItems(response?.data?.data)
         if(response.data.status == 'success'){
             toast.success('Cart updated success', {
-                position: 'bottom-center',
+                position: 'top-center',
             });
         }else{
             toast.error(response.data.status);
@@ -43,7 +43,7 @@ export default function Cart() {
         setCartCount(response.data)
         if(response.data.status == 'success'){
             toast.success('Product deleted success', {
-                position: 'bottom-center',
+                position: 'top-center',
             });
         }else{
             toast.error(response.data.status);
@@ -57,7 +57,7 @@ export default function Cart() {
         setCartCount(0)
         if(response.data.message == 'success'){
             toast.success('Cart is Cleared', {
-                position: 'bottom-center',
+                position: 'top-center',
             });
         }else{
             toast.error(response.data.message);
@@ -147,7 +147,7 @@ export default function Cart() {
             </button>
         </div>
 
-        <button className='hover:bg-red-600 hover:text-white px-5 py-3 mt-5 rounded-md border border-red-600 duration-300'
+        <button className='hover:bg-red-600 hover:mx-5 hover:text-white px-5 py-3 mt-5 rounded-md border border-red-600 duration-300'
                 onClick={clearAllProducts}>
                 Clear Your Cart
         </button>
