@@ -54,7 +54,7 @@ export default function Cart() {
 
     return <>
         <AddressTitle/>
-        <h2 className='text-2xl font-bold text-main mb-3'>Shop Now</h2>
+        <h2 className='text-2xl font-bold text-main mb-3 text-center'>Cart Shop</h2>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             {loading ? <LoadingBars/> : ''}
             <table className="text-center w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400">
@@ -64,6 +64,7 @@ export default function Cart() {
                         <th scope="col" className="px-6 py-3 font-bold">Product</th>
                         <th scope="col" className="px-6 py-3 font-bold">Price</th>
                         <th scope="col" className="px-6 py-3 font-bold">Quantity</th>
+                        <th scope="col" className="px-6 py-3 font-bold">Subtotal</th>
                         <th scope="col" className="px-6 py-3 font-bold">Action</th>
                     </tr>
                 </thead>
@@ -94,6 +95,10 @@ export default function Cart() {
                                     </button>
                                 </div>
                             </td>
+                            {/* ========== Product Subtotal ========== */}
+                            <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                                {product.price * product.count}
+                            </td>
                             {/* ========== Product Delete ========== */}
                             <td className="px-6 py-4">
                                 <span onClick={()=> deleteCartProduct(product.product.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer">Remove</span>
@@ -102,9 +107,12 @@ export default function Cart() {
                     )}
                 </tbody>
             </table>
-            <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
-                    Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
-            </h3> 
+            <div id='total'>
+
+                <h3 className='text-xl font-bold text-gray-500 text-center p-5 w-full mx-auto'>
+                        Total Price is <span className='text-main'>{cartItems?.totalCartPrice} EGY</span>
+                </h3> 
+            </div>
         </div>
         <button className='btn w-full bg-main'>
             <Link to={'/checkout'}>Check Out</Link>

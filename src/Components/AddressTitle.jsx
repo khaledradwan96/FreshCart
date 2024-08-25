@@ -4,12 +4,7 @@
 export default function AddressTitle() {
   let userName = localStorage.getItem('userName')
   let pageName = window.location.pathname.slice(1, )
-  console.log(pageName)
-
-  let name = "productDetails/6428ebc6dc1175abc65ca0b9/Women's%20Fashion"
-  let result = name
-  console.log(result)
-
+  
   return <>
     <div className='flex justify-between mb-10'>
         <div>

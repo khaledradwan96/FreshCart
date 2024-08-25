@@ -5,11 +5,17 @@ import React , { useState , useEffect, useContext} from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg'
 import { UserContext } from '../../Context/UserContext'
+import { CartContext } from '../../Context/CartContext'
 import './NavBar.css'
 
 export default function NavBar() {
     let  {userLogin, setUserLogin} = useContext(UserContext)
+    let {getLoggedCart} = useContext(CartContext)
     let navigate = useNavigate()
+    const [cartItems, setCartItems] = useState(0)
+    const [loading, setLoading] = useState(false)
+
+
 
     function logOut(){
         localStorage.removeItem('userToken') // remove data from localStorage
@@ -34,7 +40,20 @@ export default function NavBar() {
         }
     }
     window.addEventListener('scroll', navBarFixed)
-    
+
+    async function getCartItems(){
+        setLoading(true)
+        let response = await getLoggedCart()
+        setCartItems(response?.data.numOfCartItems)
+        // console.log(response?.data?.numOfCartItems)
+        setLoading(false)
+        // => i have a problem with make number change dynamic after add or remove new product
+    }
+
+    useEffect(()=> {
+        getCartItems()
+    },[])
+
     return <>
         <header id='mainHeader' className='bg-black text-white p-3'>
             <div className='flex justify-center items-center relative'>
@@ -99,14 +118,13 @@ export default function NavBar() {
                                     <button type="button" className="relative p-3">
                                         <Link to='cart'>
                                             <i className="fa-solid fa-cart-shopping text-gray-700 text-xl" />
-                                            <span id="cartCount" 
-                                            className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                            0
+                                            <span className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                                                {cartItems}
                                             </span>
                                         </Link>
                                     </button>
                                 </li>
-                                <li id="user" className="">
+                                <li id="user">
                                     <button type="button" className="relative p-3">
                                         <Link to='account'>
                                             <i className="fa-solid fa-user  text-gray-700 text-xl"></i>
