@@ -2,11 +2,13 @@
 /* eslint-disable react/prop-types */
 
 import axios from "axios";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export let WishContext = createContext(0)
 
 export function WishContextProvider(props){
+    let [wishItems, setWishItems] = useState(null)
+
     let headers = {
             token: localStorage.getItem('userToken')
     }
@@ -41,8 +43,17 @@ export function WishContextProvider(props){
         .catch((error)=> error)
     }
 
+    async function getWish() {
+        let response = await getLoggedWishlist()
+        setWishItems[response.data.data]
+    }
 
-    return <WishContext.Provider value={{getLoggedWishlist, addToWish, deleteWish}}>
+    useEffect(()=>{
+        getWish()
+    })
+
+
+    return <WishContext.Provider value={{getLoggedWishlist, addToWish, deleteWish, wishItems, setWishItems}}>
                 {props.children}
             </WishContext.Provider>
 }

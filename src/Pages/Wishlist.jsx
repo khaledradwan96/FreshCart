@@ -11,11 +11,10 @@ import AddressTitle from '../Components/AddressTitle'
 
 
 export default function Wishlist() {
-    let {getLoggedWishlist, deleteWish} = useContext(WishContext)
+    let {getLoggedWishlist, deleteWish,  wishItems, setWishItems} = useContext(WishContext)
     let {addProduct, setCartCount} = useContext(CartContext)
     const [loading, setLoading] = useState(false)
-    const [wishItems, setWishItems] = useState(null)
-  const [productId, setProductId] = useState(null)
+    const [productId, setProductId] = useState(null)
 
 
     async function getWishItems(){

@@ -5,11 +5,13 @@ import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LoadingInfinity from '../../Components/LoadingInfinity';
 import { CartContext } from '../../Context/CartContext';
+import { WishContext } from '../../Context/WishContext';
 import { toast } from 'react-hot-toast';
 
 
 export default function RecentProducts() {
   let {addProduct, setCartCount} = useContext(CartContext)
+  let {addToWish, wishItems, setWishItems} = useContext(WishContext)
   const [loading, setLoading] = useState(false)
   const [btnLoading, setBtnLoading] = useState(false)
   const [productId, setProductId] = useState(null)
@@ -41,6 +43,23 @@ export default function RecentProducts() {
     setBtnLoading(false)
   }
 
+  async function addProductToWish(productId) {
+    setProductId(productId)
+    let response = await addToWish(productId)
+    setWishItems(response?.data.data)
+    console.log(response.data.data)
+    if(response.data.status == 'success'){
+      toast.success(response.data.message, {
+        position: 'top-right',
+        style: {
+          minWidth: '400px',
+        }
+      });
+    }else{
+      toast.error(response.data.message);
+    }
+  }
+
   useEffect(()=>{
     getRecentProducts()
   }, [])
@@ -60,11 +79,21 @@ export default function RecentProducts() {
                         <span><i className='fa-solid fa-star text-yellow-300'></i>{product.ratingsAverage}</span>
                       </div>
                   </Link>
-
-                  <button onClick={()=> addProductToCart(product.id)} className='btn bg-main w-full'>
-                    {btnLoading && productId == product.id ? <i className="fa-solid fa-spinner fa-spin"></i> 
-                      : <span><i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i></span>}
-                  </button>
+                  <div className='flex flex-row items-center'>
+                    <button onClick={()=> addProductToCart(product.id)} className='btn bg-main w-full'>
+                      {btnLoading && productId == product.id ? <i className="fa-solid fa-spinner fa-spin"></i> 
+                        : <span><i className="fa-solid fa-plus"></i> Add to Cart </span>}
+                    </button>
+                    <button onClick={()=> addProductToWish(product.id)}>
+                      <span>
+                        {wishItems?.find((item)=> item == product.id) ?
+                          <i className="fa-solid fa-heart fa-xl ms-5 text-red-600"></i>
+                          :
+                          <i className="fa-solid fa-heart fa-xl ms-5"></i>
+                        }
+                      </span>
+                    </button>
+                  </div>
                 </div>
           </div>
         )
@@ -75,3 +104,5 @@ export default function RecentProducts() {
 
 // => I use Link in product to can go to productDetails
 // => user can add product to cart by click on button using addProductToCart(product.id)
+
+// => need to handel when user click on heart to remove item from wish list
