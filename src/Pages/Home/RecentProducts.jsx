@@ -47,7 +47,6 @@ export default function RecentProducts() {
     setProductId(productId)
     let response = await addToWish(productId)
     setWishItems(response?.data.data)
-    console.log(response.data.data)
     if(response.data.status == 'success'){
       toast.success(response.data.message, {
         position: 'top-right',

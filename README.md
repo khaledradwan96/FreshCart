@@ -6,21 +6,21 @@ This project is an e-commerce platform built with React. It features a user-frie
 
 ## 🚀 Features
 
-- **Product Listing:** Display a wide range of products with sorting and filtering options.
+- **Product Listing:** Display a wide range of products
+- **Categories Page:** Display all categories and subcategories when click
 - **Product Details:** Detailed view of each product with images, descriptions, and pricing.
 - **Shopping Cart:** Add products to the cart and manage quantities.
+- **Count of Cart:** Show number of items in cart in nav bar
 - **Checkout Process:** Secure checkout flow with payment integration.
 - **User Authentication:** Sign up, log in, and manage user accounts.
   - Users can reset their password via email.
+- **WishList items:** User can add product to wishlist page and control them
 - **Responsive Design:** Optimized for both desktop and mobile devices.
 
 ## ✨ Upcoming Features
 
-- Make the number of cart items update dynamically without reloading the page.
-- Add a wishlist page where users can save favorite items.
-- Implement the addToWishlist function.
 - Add a products page with detailed listings.
-- Add a categories page for product sorting.
+- Add search bar for products
 - Add a brands page to showcase different brands.
 - Add a contact page for inquiries.
 - Add an about page for company information.
@@ -28,6 +28,14 @@ This project is an e-commerce platform built with React. It features a user-frie
 - edit toast of add product
 - fixed pug in Checkout session and pay
 - mange page of user account
+- add search bar to products
+
+
+## ✨ Working on handel it more
+- make addToCart as independent Compound and use it when need
+- handel remove items from wish list
+- when user select product in products compound
+- 
 
 ## 🛠️ Technologies Used
 

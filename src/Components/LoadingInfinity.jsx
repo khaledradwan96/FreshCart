@@ -15,7 +15,7 @@ import { InfinitySpin } from 'react-loader-spinner'
 
 export default function LoadingInfinity() {
     return <>
-        <div className='w-full flex justify-center items-center'>
+        <div className='w-full min-h-[70vh] flex justify-center items-center'>
             <InfinitySpin
                 visible={true}
                 width="200"

@@ -23,9 +23,7 @@ body {
 .rating-color {
   color: var(--rating-color);
 }
-.cursor-pointer {
-  cursor: pointer;
-}
+
 a,
 a:hover {
   /* color: black; */

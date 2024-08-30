@@ -69,11 +69,11 @@ export default function NavBar() {
                         {userLogin !== null ? 
                             <>
                                 <li className='p-2'><NavLink to=''>Home</NavLink></li>
-                                <li className='p-2'><NavLink to='contact'>Contact</NavLink></li>
-                                <li className='p-2'><NavLink to='about'>About</NavLink></li>
                                 <li className='p-2'><NavLink to='products'>Products</NavLink></li>
                                 <li className='p-2'><NavLink to='categories'>Categories</NavLink></li>                        
                                 <li className='p-2'><NavLink to='brands'>Brands</NavLink></li>
+                                <li className='p-2'><NavLink to='contact'>Contact</NavLink></li>
+                                <li className='p-2'><NavLink to='about'>About</NavLink></li>
                             </> : null}
                     </ul>
                 </div>
