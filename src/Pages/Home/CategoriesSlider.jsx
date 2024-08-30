@@ -60,7 +60,7 @@ export default function CategoriesSlider() {
             : <Slider {...settings} className='mb-10'>
                 {categories.map((category, i)=>
                     <div key={i}>
-                        <img src={category.image} className='h-[100px] w-full' alt="" />
+                        <img src={category.image} className='h-[150px] w-full' alt="" />
                         <h4 className='font-light mt-1'>{category.name}</h4>
                     </div>
                 )}
