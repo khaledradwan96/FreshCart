@@ -25,7 +25,7 @@ export default function Cart() {
         setCartItems(response?.data?.data)
         if(response.data.status == 'success'){
             toast.success('Cart updated success', {
-                position: 'top-center',
+                position: 'top-right',
             });
         }else{
             toast.error(response.data.status);
@@ -43,7 +43,12 @@ export default function Cart() {
         setCartCount(response.data)
         if(response.data.status == 'success'){
             toast.success('Product deleted success', {
-                position: 'top-center',
+                position: 'top-right',
+                style:{
+                    background: 'red',
+                    color: 'white',
+                    fontWeight: 'bold'
+                }
             });
         }else{
             toast.error(response.data.status);
@@ -52,12 +57,16 @@ export default function Cart() {
 
     async function clearAllProducts() {
         let response = await clearCart()
-        console.log(response)
         setCartItems(null)
         setCartCount(0)
         if(response.data.message == 'success'){
             toast.success('Cart is Cleared', {
-                position: 'top-center',
+                position: 'top-right',
+                style:{
+                    background: 'red',
+                    color: 'white',
+                    fontWeight: 'bold'
+                }
             });
         }else{
             toast.error(response.data.message);

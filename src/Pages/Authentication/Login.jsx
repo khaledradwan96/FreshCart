@@ -76,18 +76,18 @@ export default function Login() {
                     : null}
                 </div>
                 {/* ========== Submit input ========== */}
-                <div className='flex flex-row items-center justify-between'>
+                <div className='flex flex-col sm:flex-row items-center justify-between'>
                     <button type="submit" 
                             className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                             {loading ? 
                                 <i className='fa-solid fa-spinner px-1 fa-spin'></i> 
                                 : 'Login'}
                     </button>
-                        <p className='text-green-600 font-bold'>
-                            <Link to='../ForgetPassword'>
-                                Forget your password?
-                            </Link>
-                        </p>
+                    <p className='text-green-600 font-bold mt-3'>
+                        <Link to='../ForgetPassword'>
+                            Forget your password?
+                        </Link>
+                    </p>
                 </div>
                 <p className='mt-3 text-center'>
                     Not have account?

@@ -43,10 +43,10 @@ export default function NavBar() {
     return <>
         <header id='mainHeader' className='bg-black text-white p-3'>
             <div className='flex justify-center items-center relative'>
-                <h3 className='w-2/4 text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+                <h3 className='sm:w-2/4 text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
                     <Link to='' className='ms-2 underline font-bold'>ShopNow</Link>
                 </h3>
-                <div className='absolute right-5'>
+                <div className='sm:absolute right-5'>
                     <select className='bg-black'>
                         <option>English</option>
                         <option>Germany</option>

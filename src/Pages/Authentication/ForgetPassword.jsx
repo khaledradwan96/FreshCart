@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import * as Yap from 'yup'
-import AddressTitle from '../../Components/AddressTitle'
+
 export default function ForgetPassword() {
     const [loading, setLoading] = useState(false)
     const [loading2, setLoading2] = useState(false)

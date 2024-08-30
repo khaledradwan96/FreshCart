@@ -50,7 +50,7 @@ export default function ProductDetails() {
         let response = await addProduct(productId)
         if(response.data.status == 'success'){
             toast.success(response.data.message, {
-                position: 'bottom-center',
+                position: 'top-right',
                 style: {
                 minWidth: '370px',
                 }

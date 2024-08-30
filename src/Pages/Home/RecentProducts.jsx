@@ -30,8 +30,7 @@ export default function RecentProducts() {
     if(response.data.status == 'success'){
       setCartCount(response.data)
       toast.success(response.data.message, {
-        duration: 3000,
-        position: 'top-center',
+        position: 'top-right',
         style: {
           minWidth: '370px',
         }

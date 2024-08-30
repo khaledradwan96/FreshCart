@@ -3,7 +3,7 @@
 
 export default function AddressTitle() {
   let userName = localStorage.getItem('userName')
-  let pageName = window.location.pathname.slice(1, )
+  let pageName = window.location.pathname.split('/').slice(1, 2)
   
   return <>
     <div className='flex justify-between mb-10'>

@@ -29,7 +29,7 @@ import Account from './Pages/Account'
 
 let router = createBrowserRouter([
   {path: '', element: <Layout/>, children:[
-    {index: true, element: <ProtectRoute> <Home/> </ProtectRoute> },
+    {index: true, element:  <Home/> },
     {path: 'products', element: <ProtectRoute> <Products/> </ProtectRoute> },
 
     {path: 'productDetails/:id/:category', element: <ProtectRoute> <ProductDetails/> </ProtectRoute>},
@@ -41,7 +41,7 @@ let router = createBrowserRouter([
     {path: 'wishlist', element: <ProtectRoute> <Wishlist/> </ProtectRoute>},
     {path: 'cart', element: <ProtectRoute> <Cart/> </ProtectRoute>},
     {path: 'checkout', element: <ProtectRoute> <Checkout/> </ProtectRoute>},
-    {path: 'allrders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
+    {path: 'allorders', element: <ProtectRoute> <AllOrders/> </ProtectRoute>},
     {path: 'account', element: <ProtectRoute> <Account/> </ProtectRoute>},
     {path: 'register', element: <Register/>},
     {path: 'login', element: <Login/>},

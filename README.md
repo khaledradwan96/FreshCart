@@ -1,4 +1,4 @@
-# 🛒 E-Commerce React Project
+# 🛒 Fresh Cart || E-Commerce with React
 
 ## 📄 Overview
 

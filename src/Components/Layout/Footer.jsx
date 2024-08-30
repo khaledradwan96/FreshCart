@@ -14,7 +14,7 @@ export default function Footer() {
     <div className='bg-gray-300'>
         <div className="container mx-auto p-4">
             <h2>Footer</h2>
-            <li id='social' className='hidden md:block'>
+            <li id='social' className='block'>
                 <Link to='#'><i className='fab p-2 fa-facebook'></i></Link>
                 <Link to='#'><i className='fab p-2 fa-youtube'></i></Link>
                 <Link to='#'><i className='fab p-2 fa-tiktok'></i></Link>
