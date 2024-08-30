@@ -92,11 +92,7 @@ export default function NavBar() {
                                 <li id='whish'>
                                     <button>
                                         <Link to='wishlist' className="relative p-3">
-                                            <i className="fa-regular fa-heart text-red-700 text-xl"></i>
-                                            <span id="wishCount" 
-                                            className="absolute inline-flex items-center justify-center w-7 h-7 font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                                            0
-                                            </span>
+                                            <i className="fa-solid fa-heart text-red-600 text-xl"></i>
                                         </Link>
                                     </button>
                                 </li>

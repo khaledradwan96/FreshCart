@@ -15,6 +15,7 @@ import ProtectRoute from './Pages/Authentication/ProtectRoute'
 import Notfound from './Pages/Notfound'
 import UserContextProvider from './Context/UserContext'
 import { CartContextProvider } from './Context/CartContext'
+import { WishContextProvider } from './Context/WishContext'
 
 import { Toaster } from 'react-hot-toast';
 import Checkout from './Pages/Checkout'
@@ -54,8 +55,10 @@ function App() {
   return <>
       <UserContextProvider>
           <CartContextProvider>
+            <WishContextProvider>
                     <RouterProvider router={router}></RouterProvider>
                     <Toaster />
+            </WishContextProvider>
           </CartContextProvider>
       </UserContextProvider>
     </>

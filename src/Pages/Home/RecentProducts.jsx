@@ -60,6 +60,7 @@ export default function RecentProducts() {
                         <span><i className='fa-solid fa-star text-yellow-300'></i>{product.ratingsAverage}</span>
                       </div>
                   </Link>
+
                   <button onClick={()=> addProductToCart(product.id)} className='btn bg-main w-full'>
                     {btnLoading && productId == product.id ? <i className="fa-solid fa-spinner fa-spin"></i> 
                       : <span><i className="fa-solid fa-plus"></i> add to Cart <i className="fa-solid fa-cart-shopping"></i></span>}
